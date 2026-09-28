@@ -348,7 +348,22 @@ if (yearEl) {
       if (ogTitle) ogTitle.setAttribute("content", t.site.title);
       const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogDesc) ogDesc.setAttribute("content", t.site.desc);
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twitterTitle) twitterTitle.setAttribute("content", t.site.title);
+      const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+      if (twitterDesc) twitterDesc.setAttribute("content", t.site.desc);
+      const ogLocale = document.querySelector('meta[property="og:locale"]');
+      if (ogLocale) ogLocale.setAttribute("content", lang === "en" ? "en_US" : "id_ID");
     }
+
+    // Dynamic canonical and OG URL resolution
+    try {
+      const currentOriginUrl = window.location.origin + window.location.pathname;
+      const canEl = document.getElementById("canonicalUrl");
+      if (canEl) canEl.setAttribute("href", currentOriginUrl);
+      const ogUrlEl = document.getElementById("ogUrl");
+      if (ogUrlEl) ogUrlEl.setAttribute("content", currentOriginUrl);
+    } catch (e) {}
 
     // Update text elements with data-i18n
     document.querySelectorAll("[data-i18n]").forEach((el) => {
