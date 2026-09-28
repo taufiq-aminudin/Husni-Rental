@@ -217,6 +217,88 @@
       <button class="menu-btn" aria-label="Buka menu" aria-expanded="false">☰</button>
     </div>
   </div>
+
+  <!-- Horizontal Auto-Scrolling Ticker Bar for Urgent Updates -->
+  <aside class="news-ticker-bar" role="region" aria-label="Informasi Terkini / Urgent Announcements">
+    <div class="container ticker-container">
+      <div class="ticker-badge">
+        <span class="ticker-pulse" aria-hidden="true"></span>
+        <span class="ticker-badge-text" data-i18n="ticker.badge">INFO TERKINI</span>
+      </div>
+      <div class="ticker-marquee-wrapper" id="tickerWrapper" tabindex="0" aria-label="Auto-scrolling news marquee. Hover or focus to pause.">
+        <div class="ticker-track" id="tickerTrack">
+          <!-- Primary Track List -->
+          <ul class="ticker-list">
+            <li class="ticker-item">
+              <span class="ticker-tag" data-i18n="ticker.tagAvailable">TERSEDIA</span>
+              <span class="ticker-text" data-i18n="ticker.itemAvailable">Unit Ready di Tanjung &amp; Balangan Minggu Ini</span>
+              <a href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menanyakan%20ketersediaan%20unit%20ready%20di%20Tanjung%20minggu%20ini." target="_blank" rel="noopener" class="ticker-action" data-action="unit" data-i18n="ticker.actionClaim">Klaim Unit ↗</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag promo" data-i18n="ticker.tagPromo">TARIF KHUSUS</span>
+              <span class="ticker-text" data-i18n="ticker.itemPromo">Tarif Spesial untuk Proyek Jangka Panjang &amp; Kontrak Bulanan</span>
+              <a href="#estimator" class="ticker-action ticker-scroll-link" data-action="calc" data-i18n="ticker.actionCalc">Hitung Biaya →</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag fast" data-i18n="ticker.tagFast">MOBILISASI CEPAT</span>
+              <span class="ticker-text" data-i18n="ticker.itemFast">Layanan Siap Kirim &amp; Gratis Survei Lokasi Proyek</span>
+              <a href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menjadwalkan%20survei%20lokasi%20proyek%20gratis." target="_blank" rel="noopener" class="ticker-action" data-action="survey" data-i18n="ticker.actionSurvey">Jadwal Survei ↗</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag" data-i18n="ticker.tagGuaranteed">GARANSI UNIT</span>
+              <span class="ticker-text" data-i18n="ticker.itemGuaranteed">Garansi Alat Prima: Jam Sewa Tidak Terpotong jika Ada Kendala Teknis</span>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag phone" data-i18n="ticker.tagDirect">HOTLINE WA</span>
+              <span class="ticker-text" data-i18n="ticker.itemDirect">Booking Cepat &amp; Konsultasi Langsung: 0812-5043-4900</span>
+              <a href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20konsultasi%20dan%20booking%20rental%20excavator." target="_blank" rel="noopener" class="ticker-action" data-action="direct" data-i18n="ticker.actionChat">Chat Sekarang ↗</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+          </ul>
+
+          <!-- Duplicate Track List for Seamless Infinite Loop -->
+          <ul class="ticker-list" aria-hidden="true">
+            <li class="ticker-item">
+              <span class="ticker-tag" data-i18n="ticker.tagAvailable">TERSEDIA</span>
+              <span class="ticker-text" data-i18n="ticker.itemAvailable">Unit Ready di Tanjung &amp; Balangan Minggu Ini</span>
+              <a href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menanyakan%20ketersediaan%20unit%20ready%20di%20Tanjung%20minggu%20ini." target="_blank" rel="noopener" class="ticker-action" data-action="unit" data-i18n="ticker.actionClaim" tabindex="-1">Klaim Unit ↗</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag promo" data-i18n="ticker.tagPromo">TARIF KHUSUS</span>
+              <span class="ticker-text" data-i18n="ticker.itemPromo">Tarif Spesial untuk Proyek Jangka Panjang &amp; Kontrak Bulanan</span>
+              <a href="#estimator" class="ticker-action ticker-scroll-link" data-action="calc" data-i18n="ticker.actionCalc" tabindex="-1">Hitung Biaya →</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag fast" data-i18n="ticker.tagFast">MOBILISASI CEPAT</span>
+              <span class="ticker-text" data-i18n="ticker.itemFast">Layanan Siap Kirim &amp; Gratis Survei Lokasi Proyek</span>
+              <a href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menjadwalkan%20survei%20lokasi%20proyek%20gratis." target="_blank" rel="noopener" class="ticker-action" data-action="survey" data-i18n="ticker.actionSurvey" tabindex="-1">Jadwal Survei ↗</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag" data-i18n="ticker.tagGuaranteed">GARANSI UNIT</span>
+              <span class="ticker-text" data-i18n="ticker.itemGuaranteed">Garansi Alat Prima: Jam Sewa Tidak Terpotong jika Ada Kendala Teknis</span>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+            <li class="ticker-item">
+              <span class="ticker-tag phone" data-i18n="ticker.tagDirect">HOTLINE WA</span>
+              <span class="ticker-text" data-i18n="ticker.itemDirect">Booking Cepat &amp; Konsultasi Langsung: 0812-5043-4900</span>
+              <a href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20konsultasi%20dan%20booking%20rental%20excavator." target="_blank" rel="noopener" class="ticker-action" data-action="direct" data-i18n="ticker.actionChat" tabindex="-1">Chat Sekarang ↗</a>
+            </li>
+            <li class="ticker-divider" aria-hidden="true">•</li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="ticker-pause-toggle" id="tickerPauseBtn" aria-label="Jeda pergerakan informasi" title="Jeda / Lanjutkan Animasi">
+        <span class="ticker-pause-icon" aria-hidden="true">⏸</span>
+      </button>
+    </div>
+  </aside>
 </header>
 
 <main id="home">

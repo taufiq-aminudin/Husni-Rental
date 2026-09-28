@@ -392,12 +392,28 @@ if (yearEl) {
       });
     });
 
-    // Update WhatsApp links (exclude custom estimator quote button)
+    // Update WhatsApp links (exclude custom estimator quote button and specialized ticker action links)
     if (t.waPreset) {
       const encodedMsg = encodeURIComponent(t.waPreset);
-      document.querySelectorAll('a[href*="wa.me/6281250434900"]:not(#estimatorWaBtn)').forEach((a) => {
+      document.querySelectorAll('a[href*="wa.me/6281250434900"]:not(#estimatorWaBtn):not(.ticker-action)').forEach((a) => {
         a.setAttribute("href", `https://wa.me/6281250434900?text=${encodedMsg}`);
       });
+    }
+
+    // Update specialized ticker WhatsApp actions
+    if (t.ticker) {
+      if (t.ticker.waUnit) {
+        const uMsg = encodeURIComponent(t.ticker.waUnit);
+        document.querySelectorAll('.ticker-action[data-action="unit"]').forEach(a => a.setAttribute("href", `https://wa.me/6281250434900?text=${uMsg}`));
+      }
+      if (t.ticker.waSurvey) {
+        const sMsg = encodeURIComponent(t.ticker.waSurvey);
+        document.querySelectorAll('.ticker-action[data-action="survey"]').forEach(a => a.setAttribute("href", `https://wa.me/6281250434900?text=${sMsg}`));
+      }
+      if (t.ticker.waDirect) {
+        const dMsg = encodeURIComponent(t.ticker.waDirect);
+        document.querySelectorAll('.ticker-action[data-action="direct"]').forEach(a => a.setAttribute("href", `https://wa.me/6281250434900?text=${dMsg}`));
+      }
     }
 
     // Update language buttons active state
@@ -742,4 +758,33 @@ Mohon informasi penawaran harga final dan jadwal unit yang tersedia. Terima kasi
   // Initial calculation
   updateSliderConfig();
   calculate();
+})();
+
+// News Ticker Controller (Pause/Resume & Accessible Interaction)
+(function initNewsTicker() {
+  const tickerTrack = document.getElementById("tickerTrack");
+  const pauseBtn = document.getElementById("tickerPauseBtn");
+  const pauseIcon = pauseBtn ? pauseBtn.querySelector(".ticker-pause-icon") : null;
+  if (!tickerTrack || !pauseBtn) return;
+
+  let isPaused = false;
+
+  const updatePauseState = () => {
+    tickerTrack.classList.toggle("is-paused", isPaused);
+    if (pauseIcon) {
+      pauseIcon.textContent = isPaused ? "▶" : "⏸";
+    }
+    const currentLang = localStorage.getItem("husni_lang") || "id";
+    const t = typeof translations !== "undefined" && translations[currentLang] ? translations[currentLang].ticker : null;
+    const label = isPaused
+      ? (t && t.playAria ? t.playAria : "Lanjutkan pergerakan informasi")
+      : (t && t.pauseAria ? t.pauseAria : "Jeda pergerakan informasi");
+    pauseBtn.setAttribute("aria-label", label);
+    pauseBtn.setAttribute("title", label);
+  };
+
+  pauseBtn.addEventListener("click", () => {
+    isPaused = !isPaused;
+    updatePauseState();
+  });
 })();
