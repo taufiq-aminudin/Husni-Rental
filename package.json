@@ -1,0 +1,15 @@
+{
+  "name": "husni-rental",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HUSNI RENTAL EXCAVATOR melayani rental excavator harian, borongan dan bulanan di Paringin, Tanjung, Balangan, Kalimantan Selatan.",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build complete'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

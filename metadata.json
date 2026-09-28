@@ -1,0 +1,8 @@
+{
+  "name": "HUSNI RENTAL EXCAVATOR",
+  "description": "HUSNI RENTAL EXCAVATOR melayani rental excavator harian, borongan dan bulanan di Paringin, Tanjung, Balangan, Kalimantan Selatan.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
