@@ -753,10 +753,67 @@
     <!-- Gallery Grid -->
     <div class="gallery-grid" id="galleryGrid">
       <!-- Item 1: Land Clearing -->
-      <article class="gallery-card" data-category="land-clearing">
+      <article class="gallery-card" data-category="land-clearing" data-model="Komatsu PC200-8 Heavy Duty" data-hp="148 HP (110 kW)" data-bucket="0.93 m³" data-weight="20.500 kg (20.5 Ton)" data-depth="6.62 Meter">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-land-clearing.jpg" data-caption="Pembersihan semak belukar, penumbangan pohon, dan perataan lahan di Juai, Balangan.">
           <img src="/assets/images/gallery-land-clearing.jpg" alt="Pekerjaan Land Clearing Excavator di Juai Balangan" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
           <div class="gallery-badge" data-i18n="galeri.c1Badge">Land Clearing</div>
+          
+          <button class="gallery-spec-toggle-btn" type="button" aria-expanded="false" title="Lihat Spesifikasi Teknis Alat">
+            <span class="spec-toggle-icon">⚙️</span>
+            <span data-i18n="galeri.specBtn">Spesifikasi Alat</span>
+          </button>
+
+          <!-- Technical Specification Sheet Overlay -->
+          <div class="gallery-spec-overlay" aria-hidden="true">
+            <div class="spec-overlay-inner">
+              <div class="spec-overlay-header">
+                <div class="spec-model-badge">
+                  <span class="spec-brand-tag">KOMATSU</span>
+                  <strong data-i18n="galeri.c1Model">Komatsu PC200-8 Heavy Duty</strong>
+                </div>
+                <button class="spec-overlay-close" type="button" aria-label="Tutup spesifikasi" title="Tutup Spesifikasi">&times;</button>
+              </div>
+
+              <div class="spec-overlay-grid">
+                <!-- 1. Horsepower -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚡</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specHpLabel">Tenaga Mesin</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c1Hp">148 HP (110 kW)</strong>
+                  </div>
+                </div>
+
+                <!-- 2. Bucket Capacity -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">🪣</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specBucketLabel">Kapasitas Bucket</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c1Bucket">0.93 m³</strong>
+                  </div>
+                </div>
+
+                <!-- 3. Operating Weight -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚖️</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specWeightLabel">Bobot Operasi</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c1Weight">20.500 kg (20.5 Ton)</strong>
+                  </div>
+                </div>
+
+                <!-- Extra: Dig Depth -->
+                <div class="spec-item">
+                  <div class="spec-item-icon">📏</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specDepthLabel">Kedalaman Gali</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c1Depth">6.62 Meter</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <button class="gallery-zoom-btn" aria-label="Perbesar foto land clearing" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
@@ -766,16 +823,90 @@
             <span class="gallery-loc" data-i18n="galeri.c1Tag1">📍 Area Juai, Balangan</span>
             <span class="gallery-durasi" data-i18n="galeri.c1Tag2">Sewa Borongan</span>
           </div>
+
+          <!-- Technical Specs Highlights Strip -->
+          <div class="gallery-spec-strip" aria-label="Spesifikasi Utama Unit">
+            <div class="spec-pill" title="Tenaga Mesin">
+              <span class="spec-pill-icon">⚡</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specHpLabel">TENAGA</small><b data-i18n="galeri.c1Hp">148 HP</b></div>
+            </div>
+            <div class="spec-pill" title="Kapasitas Bucket">
+              <span class="spec-pill-icon">🪣</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specBucketLabel">BUCKET</small><b data-i18n="galeri.c1Bucket">0.93 m³</b></div>
+            </div>
+            <div class="spec-pill" title="Bobot Operasi">
+              <span class="spec-pill-icon">⚖️</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specWeightLabel">BOBOT</small><b>20.5 Ton</b></div>
+            </div>
+          </div>
+
           <h3 data-i18n="galeri.c1Title">Pembukaan Lahan Sawit &amp; Perkebunan</h3>
           <p data-i18n="galeri.c1Desc">Penumbangan semak belukar, pembersihan tunggul kayu, dan perataan jalur tanam di area perkebunan sawit seluas 5 hektar.</p>
         </div>
       </article>
 
       <!-- Item 2: Digging Pond -->
-      <article class="gallery-card" data-category="kolam">
+      <article class="gallery-card" data-category="kolam" data-model="Komatsu PC200 Long Arm" data-hp="148 HP Turbocharged" data-bucket="0.55 - 0.80 m³" data-weight="21.200 kg (21.2 Ton)" data-depth="11.50 Meter">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-pond-digging.jpg" data-caption="Penggalian kolam penampungan air dan embung pertanian di Paringin Kota.">
           <img src="/assets/images/gallery-pond-digging.jpg" alt="Penggalian Kolam dan Embung Penampungan Air di Paringin" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
           <div class="gallery-badge" data-i18n="galeri.c2Badge">Galian Kolam</div>
+
+          <button class="gallery-spec-toggle-btn" type="button" aria-expanded="false" title="Lihat Spesifikasi Teknis Alat">
+            <span class="spec-toggle-icon">⚙️</span>
+            <span data-i18n="galeri.specBtn">Spesifikasi Alat</span>
+          </button>
+
+          <!-- Technical Specification Sheet Overlay -->
+          <div class="gallery-spec-overlay" aria-hidden="true">
+            <div class="spec-overlay-inner">
+              <div class="spec-overlay-header">
+                <div class="spec-model-badge">
+                  <span class="spec-brand-tag">KOMATSU</span>
+                  <strong data-i18n="galeri.c2Model">Komatsu PC200 Long Arm</strong>
+                </div>
+                <button class="spec-overlay-close" type="button" aria-label="Tutup spesifikasi" title="Tutup Spesifikasi">&times;</button>
+              </div>
+
+              <div class="spec-overlay-grid">
+                <!-- 1. Horsepower -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚡</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specHpLabel">Tenaga Mesin</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c2Hp">148 HP Turbocharged</strong>
+                  </div>
+                </div>
+
+                <!-- 2. Bucket Capacity -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">🪣</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specBucketLabel">Kapasitas Bucket</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c2Bucket">0.55 - 0.80 m³</strong>
+                  </div>
+                </div>
+
+                <!-- 3. Operating Weight -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚖️</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specWeightLabel">Bobot Operasi</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c2Weight">21.200 kg (21.2 Ton)</strong>
+                  </div>
+                </div>
+
+                <!-- Extra: Dig Depth -->
+                <div class="spec-item">
+                  <div class="spec-item-icon">📏</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specDepthLabel">Kedalaman Gali</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c2Depth">11.50 Meter</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <button class="gallery-zoom-btn" aria-label="Perbesar foto galian kolam" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
@@ -785,16 +916,90 @@
             <span class="gallery-loc" data-i18n="galeri.c2Tag1">📍 Paringin Kota</span>
             <span class="gallery-durasi" data-i18n="galeri.c2Tag2">Sewa Harian</span>
           </div>
+
+          <!-- Technical Specs Highlights Strip -->
+          <div class="gallery-spec-strip" aria-label="Spesifikasi Utama Unit">
+            <div class="spec-pill" title="Tenaga Mesin">
+              <span class="spec-pill-icon">⚡</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specHpLabel">TENAGA</small><b data-i18n="galeri.c2Hp">148 HP</b></div>
+            </div>
+            <div class="spec-pill" title="Kapasitas Bucket">
+              <span class="spec-pill-icon">🪣</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specBucketLabel">BUCKET</small><b>0.80 m³</b></div>
+            </div>
+            <div class="spec-pill" title="Bobot Operasi">
+              <span class="spec-pill-icon">⚖️</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specWeightLabel">BOBOT</small><b>21.2 Ton</b></div>
+            </div>
+          </div>
+
           <h3 data-i18n="galeri.c2Title">Pembuatan Kolam Ikan &amp; Embung Air</h3>
           <p data-i18n="galeri.c2Desc">Pengerukan kolam penampungan air dan budidaya ikan dengan profil dinding terasering presisi dan tanggul tanah kokoh.</p>
         </div>
       </article>
 
       <!-- Item 3: Construction & Cut/Fill -->
-      <article class="gallery-card" data-category="konstruksi">
+      <article class="gallery-card" data-category="konstruksi" data-model="Caterpillar 320D Earthmover" data-hp="153 HP (Cat C6.4)" data-bucket="1.00 m³" data-weight="21.500 kg (21.5 Ton)" data-depth="6.72 Meter">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-construction-site.jpg" data-caption="Pekerjaan cut and fill pematangan tanah fondasi bangunan di Batumandi - Tanjung.">
           <img src="/assets/images/gallery-construction-site.jpg" alt="Proyek Cut and Fill Pematangan Lahan Bangunan Batumandi Tanjung" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
           <div class="gallery-badge" data-i18n="galeri.c3Badge">Konstruksi &amp; Cut-Fill</div>
+
+          <button class="gallery-spec-toggle-btn" type="button" aria-expanded="false" title="Lihat Spesifikasi Teknis Alat">
+            <span class="spec-toggle-icon">⚙️</span>
+            <span data-i18n="galeri.specBtn">Spesifikasi Alat</span>
+          </button>
+
+          <!-- Technical Specification Sheet Overlay -->
+          <div class="gallery-spec-overlay" aria-hidden="true">
+            <div class="spec-overlay-inner">
+              <div class="spec-overlay-header">
+                <div class="spec-model-badge">
+                  <span class="spec-brand-tag">CATERPILLAR</span>
+                  <strong data-i18n="galeri.c3Model">Caterpillar 320D Earthmover</strong>
+                </div>
+                <button class="spec-overlay-close" type="button" aria-label="Tutup spesifikasi" title="Tutup Spesifikasi">&times;</button>
+              </div>
+
+              <div class="spec-overlay-grid">
+                <!-- 1. Horsepower -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚡</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specHpLabel">Tenaga Mesin</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c3Hp">153 HP (Cat C6.4)</strong>
+                  </div>
+                </div>
+
+                <!-- 2. Bucket Capacity -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">🪣</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specBucketLabel">Kapasitas Bucket</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c3Bucket">1.00 m³</strong>
+                  </div>
+                </div>
+
+                <!-- 3. Operating Weight -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚖️</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specWeightLabel">Bobot Operasi</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c3Weight">21.500 kg (21.5 Ton)</strong>
+                  </div>
+                </div>
+
+                <!-- Extra: Dig Depth -->
+                <div class="spec-item">
+                  <div class="spec-item-icon">📏</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specDepthLabel">Kedalaman Gali</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c3Depth">6.72 Meter</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <button class="gallery-zoom-btn" aria-label="Perbesar foto proyek konstruksi" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
@@ -804,16 +1009,90 @@
             <span class="gallery-loc" data-i18n="galeri.c3Tag1">📍 Batumandi - Tanjung</span>
             <span class="gallery-durasi" data-i18n="galeri.c3Tag2">Sewa Bulanan</span>
           </div>
+
+          <!-- Technical Specs Highlights Strip -->
+          <div class="gallery-spec-strip" aria-label="Spesifikasi Utama Unit">
+            <div class="spec-pill" title="Tenaga Mesin">
+              <span class="spec-pill-icon">⚡</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specHpLabel">TENAGA</small><b data-i18n="galeri.c3Hp">153 HP</b></div>
+            </div>
+            <div class="spec-pill" title="Kapasitas Bucket">
+              <span class="spec-pill-icon">🪣</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specBucketLabel">BUCKET</small><b data-i18n="galeri.c3Bucket">1.00 m³</b></div>
+            </div>
+            <div class="spec-pill" title="Bobot Operasi">
+              <span class="spec-pill-icon">⚖️</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specWeightLabel">BOBOT</small><b>21.5 Ton</b></div>
+            </div>
+          </div>
+
           <h3 data-i18n="galeri.c3Title">Pematangan Lahan &amp; Fondasi Bangunan</h3>
           <p data-i18n="galeri.c3Desc">Pekerjaan cut and fill perbukitan, pemadatan tanah, dan penataan elevasi lahan untuk fondasi gudang logistik.</p>
         </div>
       </article>
 
       <!-- Item 4: Drainage & Trenching -->
-      <article class="gallery-card" data-category="drainase">
+      <article class="gallery-card" data-category="drainase" data-model="Hitachi ZX200-5G Canal Edition" data-hp="168 HP (125 kW)" data-bucket="0.70 m³" data-weight="20.200 kg (20.2 Ton)" data-depth="6.67 Meter">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-drainage-trench.jpg" data-caption="Normalisasi saluran drainase dan galian parit jalan di Lampihong, Balangan.">
           <img src="/assets/images/gallery-drainage-trench.jpg" alt="Penggalian Parit dan Normalisasi Saluran Air Lampihong" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
           <div class="gallery-badge" data-i18n="galeri.c4Badge">Drainase &amp; Parit</div>
+
+          <button class="gallery-spec-toggle-btn" type="button" aria-expanded="false" title="Lihat Spesifikasi Teknis Alat">
+            <span class="spec-toggle-icon">⚙️</span>
+            <span data-i18n="galeri.specBtn">Spesifikasi Alat</span>
+          </button>
+
+          <!-- Technical Specification Sheet Overlay -->
+          <div class="gallery-spec-overlay" aria-hidden="true">
+            <div class="spec-overlay-inner">
+              <div class="spec-overlay-header">
+                <div class="spec-model-badge">
+                  <span class="spec-brand-tag">HITACHI</span>
+                  <strong data-i18n="galeri.c4Model">Hitachi ZX200-5G Canal Edition</strong>
+                </div>
+                <button class="spec-overlay-close" type="button" aria-label="Tutup spesifikasi" title="Tutup Spesifikasi">&times;</button>
+              </div>
+
+              <div class="spec-overlay-grid">
+                <!-- 1. Horsepower -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚡</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specHpLabel">Tenaga Mesin</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c4Hp">168 HP (125 kW)</strong>
+                  </div>
+                </div>
+
+                <!-- 2. Bucket Capacity -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">🪣</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specBucketLabel">Kapasitas Bucket</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c4Bucket">0.70 m³</strong>
+                  </div>
+                </div>
+
+                <!-- 3. Operating Weight -->
+                <div class="spec-item spec-item-highlight">
+                  <div class="spec-item-icon">⚖️</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specWeightLabel">Bobot Operasi</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c4Weight">20.200 kg (20.2 Ton)</strong>
+                  </div>
+                </div>
+
+                <!-- Extra: Dig Depth -->
+                <div class="spec-item">
+                  <div class="spec-item-icon">📏</div>
+                  <div class="spec-item-content">
+                    <span class="spec-item-label" data-i18n="galeri.specDepthLabel">Kedalaman Gali</span>
+                    <strong class="spec-item-val" data-i18n="galeri.c4Depth">6.67 Meter</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <button class="gallery-zoom-btn" aria-label="Perbesar foto galian saluran air" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
@@ -823,6 +1102,23 @@
             <span class="gallery-loc" data-i18n="galeri.c4Tag1">📍 Lampihong</span>
             <span class="gallery-durasi" data-i18n="galeri.c4Tag2">Sewa Borongan</span>
           </div>
+
+          <!-- Technical Specs Highlights Strip -->
+          <div class="gallery-spec-strip" aria-label="Spesifikasi Utama Unit">
+            <div class="spec-pill" title="Tenaga Mesin">
+              <span class="spec-pill-icon">⚡</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specHpLabel">TENAGA</small><b data-i18n="galeri.c4Hp">168 HP</b></div>
+            </div>
+            <div class="spec-pill" title="Kapasitas Bucket">
+              <span class="spec-pill-icon">🪣</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specBucketLabel">BUCKET</small><b data-i18n="galeri.c4Bucket">0.70 m³</b></div>
+            </div>
+            <div class="spec-pill" title="Bobot Operasi">
+              <span class="spec-pill-icon">⚖️</span>
+              <div class="spec-pill-text"><small data-i18n="galeri.specWeightLabel">BOBOT</small><b>20.2 Ton</b></div>
+            </div>
+          </div>
+
           <h3 data-i18n="galeri.c4Title">Normalisasi Saluran &amp; Parit Drainase</h3>
           <p data-i18n="galeri.c4Desc">Penggalian saluran primer dan pembersihan sedimentasi parit jalan perkebunan untuk kelancaran aliran air saat musim hujan.</p>
         </div>
