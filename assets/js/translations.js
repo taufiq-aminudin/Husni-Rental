@@ -131,7 +131,19 @@ const translations = {
       tipTitle: "Tips Efisiensi Anggaran:",
       tipDesc: "Siapkan jalur masuk armada dan titik penampungan hasil kerukan sebelum unit tiba untuk memaksimalkan jam kerja efektif sejak hari pertama.",
       ctaFinalQuote: "Minta Penawaran Harga Final via WA ↗",
-      disclaimer: "*Hasil estimasi merupakan perkiraan awal berbasis rata-rata jam kerja excavator standar. Biaya final disesuaikan dengan hasil survei lapangan, akses jalan, dan negosiasi durasi."
+      disclaimer: "*Hasil estimasi merupakan perkiraan awal berbasis rata-rata jam kerja excavator standar. Biaya final disesuaikan dengan hasil survei lapangan, akses jalan, dan negosiasi durasi.",
+      btnSaveSimulation: "Simpan Hasil Simulasi",
+      btnSaveSimulationSuccess: "✓ Tersimpan di Riwayat!",
+      recentPanelTitle: "Riwayat Simulasi Terbaru",
+      recentPanelSubtitle: "Tersimpan di perangkat lokal untuk memudahkan Anda membandingkan skenario proyek.",
+      recentEmptyTitle: "Belum Ada Simulasi Tersimpan",
+      recentEmptyDesc: "Sesuaikan skala dan jenis proyek di kalkulator atas, lalu klik \"Simpan Hasil Simulasi\" untuk menyimpannya di sini.",
+      recentClearAll: "Hapus Semua Riwayat",
+      recentClearConfirm: "Hapus semua riwayat estimasi yang tersimpan di perangkat ini?",
+      recentLoadBtn: "Muat ke Kalkulator",
+      recentDeleteTitle: "Hapus item ini",
+      recentBadgeRestored: "Simulasi berhasil dimuat ulang ke kalkulator!",
+      recentTotalSaved: "Total Tersimpan"
     },
     faq: {
       kicker: "FAQ & INFORMASI SEWA",
@@ -388,7 +400,19 @@ const translations = {
       tipTitle: "Budget Efficiency Tip:",
       tipDesc: "Ensure heavy transport access routes and soil deposit areas are cleared before machine arrival to maximize productive hours from day one.",
       ctaFinalQuote: "Request Final Quote via WhatsApp ↗",
-      disclaimer: "*Estimated results are preliminary based on standard machine productivity metrics. Final pricing is confirmed after field survey, road accessibility check, and contractual scope agreement."
+      disclaimer: "*Estimated results are preliminary based on standard machine productivity metrics. Final pricing is confirmed after field survey, road accessibility check, and contractual scope agreement.",
+      btnSaveSimulation: "Save Simulation Result",
+      btnSaveSimulationSuccess: "✓ Saved to History!",
+      recentPanelTitle: "Recent Saved Estimates",
+      recentPanelSubtitle: "Saved locally on your device so you can easily compare and review project options.",
+      recentEmptyTitle: "No Saved Simulations Yet",
+      recentEmptyDesc: "Configure your project scope in the calculator above and click \"Save Simulation Result\" to track it here.",
+      recentClearAll: "Clear All History",
+      recentClearConfirm: "Clear all saved simulations stored on this device?",
+      recentLoadBtn: "Load to Calculator",
+      recentDeleteTitle: "Remove this item",
+      recentBadgeRestored: "Simulation successfully restored into calculator!",
+      recentTotalSaved: "Total Saved"
     },
     faq: {
       kicker: "FAQ & RENTAL GUIDE",

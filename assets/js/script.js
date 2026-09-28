@@ -428,6 +428,9 @@ if (yearEl) {
     if (typeof window.recalculateEstimator === "function") {
       window.recalculateEstimator();
     }
+    if (typeof window.renderRecentEstimates === "function") {
+      window.renderRecentEstimates();
+    }
   }
 
   langButtons.forEach((btn) => {
@@ -731,6 +734,338 @@ Mohon informasi penawaran harga final dan jadwal unit yang tersedia. Terima kasi
     estimatorWaBtn.href = `https://wa.me/6281250434900?text=${encodeURIComponent(waMessage)}`;
   }
 
+  // --- LocalStorage Recent Estimates Feature ---
+  const RECENT_STORAGE_KEY = "husni_recent_estimates";
+  const saveEstimateBtn = document.getElementById("saveEstimateBtn");
+  const saveEstimateBtnText = document.getElementById("saveEstimateBtnText");
+  const recentEstimatesList = document.getElementById("recentEstimatesList");
+  const recentCountBadge = document.getElementById("recentCountBadge");
+  const clearRecentBtn = document.getElementById("clearRecentBtn");
+  const recentToast = document.getElementById("recentToast");
+  const recentToastText = document.getElementById("recentToastText");
+  let recentToastTimer = null;
+
+  const projectIcons = {
+    clearing: "🌲",
+    pond: "🐟",
+    earthwork: "🚜",
+    drainage: "💧",
+    oilpalm: "🌴",
+    general: "🏗️"
+  };
+
+  function getRecentEstimates() {
+    try {
+      const raw = localStorage.getItem(RECENT_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      console.warn("Failed to load recent estimates from localStorage:", e);
+      return [];
+    }
+  }
+
+  function saveCurrentEstimate(feedback = true) {
+    const isEn = (localStorage.getItem("husni_lang") || "id") === "en";
+    const type = projectTypeSelect.value;
+    const conf = configMap[type] || configMap.clearing;
+    const val = parseFloat(scopeRange.value);
+    const unitText = isEn ? conf.unitEn : conf.unitId;
+
+    const terrainEl = document.querySelector('input[name="estTerrain"]:checked');
+    const terrain = terrainEl ? terrainEl.value : "medium";
+
+    const pkgEl = document.querySelector('input[name="estPackage"]:checked');
+    const pkg = pkgEl ? pkgEl.value : "allin";
+
+    const loc = locationSelect.value;
+    const days = resDaysValue.textContent;
+    const hours = resHoursValue.textContent;
+    const recSystem = resSystemBadge.textContent;
+    const recUnit = resUnitType.textContent;
+
+    const record = {
+      id: "est_" + Date.now() + "_" + Math.floor(Math.random() * 1000),
+      projectType: type,
+      scope: val,
+      unit: unitText,
+      terrain: terrain,
+      pkg: pkg,
+      location: loc,
+      days: days,
+      hours: hours,
+      recSystem: recSystem,
+      recUnit: recUnit,
+      timestamp: Date.now()
+    };
+
+    let list = getRecentEstimates();
+    // Avoid exact duplicate at the top
+    list = list.filter((item) => {
+      return !(
+        item.projectType === record.projectType &&
+        item.scope === record.scope &&
+        item.terrain === record.terrain &&
+        item.pkg === record.pkg &&
+        item.location === record.location
+      );
+    });
+
+    list.unshift(record);
+    if (list.length > 6) {
+      list = list.slice(0, 6);
+    }
+
+    try {
+      localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(list));
+    } catch (e) {
+      console.warn("Failed to save estimate to localStorage:", e);
+    }
+
+    if (feedback && saveEstimateBtn) {
+      const currentLang = localStorage.getItem("husni_lang") || "id";
+      const t = typeof translations !== "undefined" && translations[currentLang] ? translations[currentLang].estimator : null;
+      const successText = t && t.btnSaveSimulationSuccess ? t.btnSaveSimulationSuccess : "✓ Tersimpan di Riwayat!";
+      
+      saveEstimateBtn.classList.add("is-saved");
+      if (saveEstimateBtnText) saveEstimateBtnText.textContent = successText;
+
+      setTimeout(() => {
+        saveEstimateBtn.classList.remove("is-saved");
+        const defaultText = t && t.btnSaveSimulation ? t.btnSaveSimulation : "Simpan Hasil Simulasi";
+        if (saveEstimateBtnText) saveEstimateBtnText.textContent = defaultText;
+      }, 2500);
+    }
+
+    renderRecentEstimates();
+  }
+
+  function loadEstimate(item) {
+    if (!item) return;
+
+    projectTypeSelect.value = item.projectType;
+    updateSliderConfig();
+    scopeRange.value = item.scope;
+
+    const terrainRadio = document.querySelector(`input[name="estTerrain"][value="${item.terrain}"]`);
+    if (terrainRadio) terrainRadio.checked = true;
+
+    const pkgRadio = document.querySelector(`input[name="estPackage"][value="${item.pkg}"]`);
+    if (pkgRadio) pkgRadio.checked = true;
+
+    if (item.location) {
+      locationSelect.value = item.location;
+    }
+
+    calculate();
+
+    // Show confirmation toast
+    if (recentToast) {
+      const currentLang = localStorage.getItem("husni_lang") || "id";
+      const t = typeof translations !== "undefined" && translations[currentLang] ? translations[currentLang].estimator : null;
+      if (recentToastText && t && t.recentBadgeRestored) {
+        recentToastText.textContent = t.recentBadgeRestored;
+      }
+      recentToast.style.display = "flex";
+      if (recentToastTimer) clearTimeout(recentToastTimer);
+      recentToastTimer = setTimeout(() => {
+        recentToast.style.display = "none";
+      }, 3500);
+    }
+
+    // Highlight card
+    document.querySelectorAll(".recent-item-card").forEach((card) => {
+      card.classList.toggle("is-active", card.getAttribute("data-id") === item.id);
+    });
+
+    // Smooth scroll to estimator form on smaller screens
+    if (window.innerWidth <= 850) {
+      const formEl = document.getElementById("estimator");
+      if (formEl) formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function deleteEstimate(id) {
+    let list = getRecentEstimates().filter((item) => item.id !== id);
+    try {
+      localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(list));
+    } catch (e) {
+      console.warn("Failed to delete estimate from localStorage:", e);
+    }
+    renderRecentEstimates();
+  }
+
+  function clearAllEstimates() {
+    const isEn = (localStorage.getItem("husni_lang") || "id") === "en";
+    const currentLang = isEn ? "en" : "id";
+    const t = typeof translations !== "undefined" && translations[currentLang] ? translations[currentLang].estimator : null;
+    const confirmMsg = t && t.recentClearConfirm
+      ? t.recentClearConfirm
+      : (isEn ? "Clear all saved simulations stored on this device?" : "Hapus semua riwayat estimasi yang tersimpan di perangkat ini?");
+
+    if (window.confirm(confirmMsg)) {
+      try {
+        localStorage.removeItem(RECENT_STORAGE_KEY);
+      } catch (e) {
+        console.warn("Failed to clear estimates from localStorage:", e);
+      }
+      renderRecentEstimates();
+    }
+  }
+
+  function formatTime(timestamp, isEn) {
+    const now = Date.now();
+    const diffMin = Math.round((now - timestamp) / (1000 * 60));
+    if (diffMin < 2) return isEn ? "Just now" : "Baru saja";
+    if (diffMin < 60) return isEn ? `${diffMin}m ago` : `${diffMin} mnt lalu`;
+
+    const d = new Date(timestamp);
+    return d.toLocaleDateString(isEn ? "en-US" : "id-ID", {
+      day: "numeric",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  }
+
+  function renderRecentEstimates() {
+    if (!recentEstimatesList) return;
+
+    const list = getRecentEstimates();
+    const isEn = (localStorage.getItem("husni_lang") || "id") === "en";
+    const currentLang = isEn ? "en" : "id";
+    const t = typeof translations !== "undefined" && translations[currentLang] ? translations[currentLang].estimator : {};
+
+    // Update count badge & clear button
+    if (recentCountBadge) {
+      recentCountBadge.textContent = `${list.length}`;
+      recentCountBadge.style.display = list.length > 0 ? "inline-block" : "none";
+    }
+    if (clearRecentBtn) {
+      clearRecentBtn.style.display = list.length > 0 ? "inline-block" : "none";
+      if (t.recentClearAll) clearRecentBtn.textContent = t.recentClearAll;
+    }
+
+    if (list.length === 0) {
+      recentEstimatesList.innerHTML = `
+        <div class="recent-empty-state" style="grid-column: 1 / -1;">
+          <div class="recent-empty-icon">📋</div>
+          <h4>${t.recentEmptyTitle || "Belum Ada Simulasi Tersimpan"}</h4>
+          <p>${t.recentEmptyDesc || "Sesuaikan skala dan jenis proyek di kalkulator atas, lalu klik 'Simpan Hasil Simulasi' untuk menyimpannya di sini."}</p>
+        </div>
+      `;
+      return;
+    }
+
+    const typeNames = {
+      clearing: isEn ? "Land Clearing" : "Land Clearing / Pembersihan",
+      pond: isEn ? "Pond Excavation" : "Galian Kolam / Embung",
+      earthwork: isEn ? "Cut & Fill Earthwork" : "Pematangan Lahan / Cut & Fill",
+      drainage: isEn ? "Drainage Canal" : "Saluran Parit & Drainase",
+      oilpalm: isEn ? "Oil Palm Plantation" : "Perkebunan Sawit",
+      general: isEn ? "Civil / Foundation" : "Galian Sipil / Fondasi"
+    };
+
+    const terrainNames = {
+      light: isEn ? "Light Terrain" : "Medan Ringan",
+      medium: isEn ? "Moderate Terrain" : "Medan Sedang",
+      heavy: isEn ? "Heavy / Marsh" : "Medan Berat / Rawa"
+    };
+
+    const pkgNames = {
+      allin: isEn ? "Package: All-In" : "Paket All-In",
+      dry: isEn ? "Package: Dry" : "Paket Non-BBM"
+    };
+
+    const loadBtnLabel = t.recentLoadBtn || (isEn ? "Load to Calculator" : "Muat ke Kalkulator");
+    const delTitle = t.recentDeleteTitle || (isEn ? "Delete simulation" : "Hapus simulasi");
+    const unitDaysText = t.unitDays || (isEn ? "Working Days" : "Hari Kerja");
+
+    recentEstimatesList.innerHTML = list
+      .map((item) => {
+        const icon = projectIcons[item.projectType] || "🚜";
+        const title = typeNames[item.projectType] || item.projectType;
+        const conf = configMap[item.projectType] || configMap.clearing;
+        const currentUnit = isEn ? conf.unitEn : conf.unitId;
+        const timeStr = formatTime(item.timestamp, isEn);
+        const terrainStr = terrainNames[item.terrain] || item.terrain;
+        const pkgStr = pkgNames[item.pkg] || item.pkg;
+
+        return `
+          <div class="recent-item-card" data-id="${item.id}">
+            <div>
+              <div class="recent-item-header">
+                <div class="recent-item-title-wrap">
+                  <div class="recent-item-name" title="${title}">${icon} ${title}</div>
+                  <span class="recent-item-time">${timeStr}</span>
+                </div>
+                <button class="btn-del-recent" type="button" data-del-id="${item.id}" title="${delTitle}" aria-label="${delTitle}">×</button>
+              </div>
+
+              <div class="recent-tags-row">
+                <span class="recent-tag tag-scope">📐 ${item.scope} ${currentUnit}</span>
+                <span class="recent-tag">⛰️ ${terrainStr}</span>
+                <span class="recent-tag">⛽ ${pkgStr}</span>
+                <span class="recent-tag">📍 ${item.location}</span>
+              </div>
+
+              <div class="recent-item-metrics">
+                <div class="recent-metric-days">
+                  ${item.days} ${unitDaysText}
+                  <small>${item.hours}</small>
+                </div>
+                <span class="recent-metric-system">${item.recSystem}</span>
+              </div>
+            </div>
+
+            <button class="btn-load-estimate" type="button" data-load-id="${item.id}">
+              <span>↺</span>
+              <span>${loadBtnLabel}</span>
+            </button>
+          </div>
+        `;
+      })
+      .join("");
+
+    // Attach listeners to cards
+    recentEstimatesList.querySelectorAll("[data-load-id]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-load-id");
+        const found = list.find((it) => it.id === id);
+        if (found) loadEstimate(found);
+      });
+    });
+
+    recentEstimatesList.querySelectorAll("[data-del-id]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute("data-del-id");
+        if (id) deleteEstimate(id);
+      });
+    });
+  }
+
+  // Bind Save button
+  if (saveEstimateBtn) {
+    saveEstimateBtn.addEventListener("click", () => {
+      saveCurrentEstimate(true);
+    });
+  }
+
+  // Auto-save when user clicks to request quote via WhatsApp
+  if (estimatorWaBtn) {
+    estimatorWaBtn.addEventListener("click", () => {
+      saveCurrentEstimate(false);
+    });
+  }
+
+  // Bind Clear All button
+  if (clearRecentBtn) {
+    clearRecentBtn.addEventListener("click", clearAllEstimates);
+  }
+
+  // Expose render function for language switch
+  window.renderRecentEstimates = renderRecentEstimates;
+
   // Event listeners
   projectTypeSelect.addEventListener("change", () => {
     updateSliderConfig();
@@ -755,9 +1090,10 @@ Mohon informasi penawaran harga final dan jadwal unit yang tersedia. Terima kasi
     calculate();
   };
 
-  // Initial calculation
+  // Initial calculation & render recent estimates
   updateSliderConfig();
   calculate();
+  renderRecentEstimates();
 })();
 
 // News Ticker Controller (Pause/Resume & Accessible Interaction)

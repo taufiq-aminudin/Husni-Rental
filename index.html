@@ -534,10 +534,46 @@
             <span class="btn-icon">💬</span>
             <span data-i18n="estimator.ctaFinalQuote">Minta Penawaran Harga Final via WA ↗</span>
           </a>
+          <button id="saveEstimateBtn" type="button" class="btn btn-save-simulation">
+            <span class="save-icon">💾</span>
+            <span id="saveEstimateBtnText" data-i18n="estimator.btnSaveSimulation">Simpan Hasil Simulasi</span>
+          </button>
           <p class="estimator-disclaimer" data-i18n="estimator.disclaimer">
             *Hasil estimasi merupakan perkiraan awal berbasis rata-rata jam kerja excavator standar. Biaya final disesuaikan dengan hasil survei lapangan, akses jalan, dan negosiasi durasi.
           </p>
         </div>
+      </div>
+    </div>
+
+    <!-- Recent Estimates Panel (LocalStorage Powered) -->
+    <div id="recentEstimatesPanel" class="recent-estimates-card">
+      <div class="recent-estimates-header">
+        <div class="recent-header-info">
+          <div class="recent-header-icon">🕒</div>
+          <div>
+            <div class="recent-header-title-row">
+              <h3 data-i18n="estimator.recentPanelTitle">Riwayat Simulasi Terbaru</h3>
+              <span id="recentCountBadge" class="recent-count-badge" style="display:none;">0</span>
+            </div>
+            <p data-i18n="estimator.recentPanelSubtitle">Tersimpan di perangkat lokal untuk memudahkan Anda membandingkan skenario proyek.</p>
+          </div>
+        </div>
+        <div class="recent-header-actions">
+          <button id="clearRecentBtn" class="btn-clear-recent" type="button" data-i18n="estimator.recentClearAll" style="display:none;">
+            🗑️ Hapus Semua Riwayat
+          </button>
+        </div>
+      </div>
+
+      <!-- Restored notification toast/banner -->
+      <div id="recentToast" class="recent-toast" role="status" aria-live="polite" style="display:none;">
+        <span class="toast-check">✓</span>
+        <span id="recentToastText" data-i18n="estimator.recentBadgeRestored">Simulasi berhasil dimuat ulang ke kalkulator!</span>
+      </div>
+
+      <!-- List of Recent Simulations -->
+      <div id="recentEstimatesList" class="recent-estimates-list">
+        <!-- Injected dynamically via JS from localStorage -->
       </div>
     </div>
   </div>
