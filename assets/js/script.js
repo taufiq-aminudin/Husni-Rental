@@ -243,3 +243,78 @@ if (yearEl) {
     });
   });
 })();
+
+// Galeri Alat & Proyek (Filter & Lightbox Modal)
+(function initGallery() {
+  const filterBtns = document.querySelectorAll(".gallery-filter-btn");
+  const galleryCards = document.querySelectorAll(".gallery-card");
+  const modal = document.getElementById("galleryModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalCaption = document.getElementById("modalCaption");
+  const modalCloseBtn = document.getElementById("modalCloseBtn");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+
+  // Filter functionality
+  if (filterBtns.length && galleryCards.length) {
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter");
+
+        // Update active button state
+        filterBtns.forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+
+        // Filter cards
+        galleryCards.forEach((card) => {
+          const cat = card.getAttribute("data-category");
+          if (filter === "all" || cat === filter) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      });
+    });
+  }
+
+  // Lightbox Modal
+  if (modal && modalImg && modalCaption) {
+    const openModal = (src, caption) => {
+      modalImg.src = src;
+      modalCaption.textContent = caption || "";
+      modal.style.display = "flex";
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
+      document.body.style.overflow = "";
+    };
+
+    // Attach click to all gallery image wraps
+    document.querySelectorAll(".gallery-img-wrap").forEach((wrap) => {
+      wrap.addEventListener("click", () => {
+        const src = wrap.getAttribute("data-src");
+        const caption = wrap.getAttribute("data-caption");
+        if (src) openModal(src, caption);
+      });
+    });
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeModal);
+    if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+
+    // ESC key closes modal
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.style.display === "flex") {
+        closeModal();
+      }
+    });
+  }
+})();

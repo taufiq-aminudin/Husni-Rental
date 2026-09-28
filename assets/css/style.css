@@ -85,11 +85,56 @@ footer{background:#0a0c0d;color:#fff}.footer-main{display:grid;grid-template-col
 .faq-answer li{color:#4a5056}
 .faq-answer strong{color:var(--dark)}
 
+/* Gallery Section Styles */
+.gallery-section{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gallery-heading{margin-bottom:30px}
+.gallery-filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.gallery-filter-btn{padding:9px 18px;border-radius:10px;background:var(--light);border:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--text);cursor:pointer;transition:all .2s ease}
+.gallery-filter-btn:hover{background:#eaeded;border-color:#d0d4d8}
+.gallery-filter-btn.active{background:var(--yellow);color:#111;border-color:var(--yellow);box-shadow:0 4px 14px rgba(245,164,0,.28)}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.gallery-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:all .3s ease;display:flex;flex-direction:column;box-shadow:0 4px 18px rgba(0,0,0,.03)}
+.gallery-card:hover{transform:translateY(-5px);border-color:rgba(245,164,0,.5);box-shadow:var(--shadow)}
+.gallery-card.hidden{display:none}
+
+.gallery-img-wrap{position:relative;height:260px;overflow:hidden;background:#171a1d;cursor:pointer}
+.gallery-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(0.16,1,0.3,1)}
+.gallery-card:hover .gallery-img{transform:scale(1.06)}
+
+.gallery-badge{position:absolute;top:16px;left:16px;background:rgba(17,19,21,.85);backdrop-filter:blur(6px);color:var(--yellow);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:8px;border:1px solid rgba(245,164,0,.3)}
+
+.gallery-zoom-btn{position:absolute;bottom:16px;right:16px;width:38px;height:38px;border-radius:10px;background:rgba(17,19,21,.78);backdrop-filter:blur(4px);color:#fff;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;cursor:pointer;transition:all .2s ease;opacity:0;transform:translateY(8px)}
+.gallery-card:hover .gallery-zoom-btn{opacity:1;transform:translateY(0)}
+.gallery-zoom-btn:hover{background:var(--yellow);color:#111;border-color:var(--yellow)}
+
+.gallery-info{padding:22px 24px 24px;display:flex;flex-direction:column;flex-grow:1}
+.gallery-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px}
+.gallery-durasi{color:var(--yellow);background:rgba(245,164,0,.1);padding:4px 8px;border-radius:6px}
+.gallery-info h3{font-size:17px;font-weight:800;color:var(--dark);margin:0 0 8px;line-height:1.3}
+.gallery-info p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.6}
+
+.gallery-callout{margin-top:40px;background:var(--light);border:1px solid var(--line);border-radius:18px;padding:26px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.gallery-callout-text strong{display:block;font-size:16px;color:var(--dark);font-weight:800}
+.gallery-callout-text span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+
+/* Modal Lightbox */
+.gallery-modal{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
+.modal-backdrop{position:absolute;inset:0;background:rgba(10,12,14,.92);backdrop-filter:blur(8px)}
+.modal-content{position:relative;z-index:2;max-width:920px;width:100%;max-height:90vh;display:flex;flex-direction:column;align-items:center}
+.modal-image{max-width:100%;max-height:75vh;border-radius:14px;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15)}
+.modal-caption{color:#fff;font-size:14px;font-weight:600;margin-top:16px;text-align:center;background:rgba(0,0,0,.6);padding:8px 18px;border-radius:8px}
+.modal-close-btn{position:absolute;top:-45px;right:0;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:24px;display:grid;place-items:center;cursor:pointer;transition:all .2s ease}
+.modal-close-btn:hover{background:var(--yellow);color:#111}
+
 @media(max-width:850px){.menu-btn{display:block}nav{display:none;position:absolute;top:81px;left:0;right:0;background:#111;padding:20px;flex-direction:column;align-items:stretch;gap:8px}nav.open{display:flex}nav a{padding:10px}.trust-grid{grid-template-columns:repeat(2,1fr);gap:20px}.trust-grid>div{border:0;padding:0}.section-heading,.area-grid,.advantage-wrap{grid-template-columns:1fr;gap:35px}.section-heading p{margin:0}.service-grid{grid-template-columns:repeat(2,1fr)}.advantage-image{min-height:420px}.contact-card{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr}.footer-links{justify-content:flex-start}
 .testimonial-card{flex:0 0 calc((100% - 20px) / 2)}
 .testimonials-trust-row{gap:16px;padding:18px 20px}
 .faq-layout{grid-template-columns:1fr;gap:30px}
 .faq-sidebar{position:static}
+.gallery-grid{grid-template-columns:1fr}
+.gallery-callout{flex-direction:column;align-items:flex-start}
+.gallery-zoom-btn{opacity:1;transform:none}
 }
 @media(max-width:560px){.container{width:min(100% - 28px,1160px)}.nav{height:72px}.brand-logo-img{width:38px;height:38px;border-radius:9px}.brand strong{font-size:16px}.brand small{font-size:7.5px}.hero{min-height:720px}.hero-content{padding-top:70px}.hero p{font-size:14px}.hero-meta{gap:0}.hero-meta div{padding-right:12px;margin-right:12px}.hero-meta b{font-size:11px}.hero-meta span{font-size:8px}.service-grid{grid-template-columns:1fr}.section,.contact-section{padding:75px 0}.advantage-image{min-height:340px}.cta-inner{display:block}.cta-inner h2{font-size:31px;margin:8px 0 20px}.contact-card{padding:32px 25px}.footer-main{padding:32px 0}
 .testimonials-header{flex-direction:column;align-items:flex-start}
@@ -99,4 +144,7 @@ footer{background:#0a0c0d;color:#fff}.footer-main{display:grid;grid-template-col
 .faq-question{padding:16px 18px;font-size:14px}
 .faq-answer{padding:16px 18px 20px;font-size:13px}
 .faq-card-support{padding:24px 20px}
+.gallery-img-wrap{height:210px}
+.gallery-info{padding:18px 20px}
+.gallery-callout{padding:20px 18px}
 }
