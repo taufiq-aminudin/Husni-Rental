@@ -45,6 +45,44 @@ footer{background:#0a0c0d;color:#fff}.footer-main{display:grid;grid-template-col
 .trust-stat span{font-size:11px;color:var(--muted);display:block;margin-top:2px}
 .trust-stat-sep{color:#d8dcde;font-weight:300;font-size:18px}
 
+/* Card Level Share */
+.testimonial-card-share{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:14px;padding-top:12px;border-top:1px dashed #e8ecef}
+.card-share-label{font-size:10.5px;font-weight:700;color:#8c939b}
+.card-share-btns{display:flex;align-items:center;gap:6px}
+.btn-card-share{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-family:inherit;font-size:10px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:#fff;color:#505862;transition:all .18s ease}
+.btn-card-share:hover{transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.btn-card-share-fb:hover{background:#1877f2;color:#fff;border-color:#1877f2}
+.btn-card-share-li:hover{background:#0a66c2;color:#fff;border-color:#0a66c2}
+.btn-card-share-wa:hover{background:#25d366;color:#fff;border-color:#25d366}
+
+/* Testimonials Share Bar Component */
+.testimonials-share-bar{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:24px;padding:22px 28px;background:linear-gradient(135deg,#15181b 0%,#1e2227 100%);border-radius:18px;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 30px rgba(0,0,0,.15);flex-wrap:wrap}
+.share-bar-content{display:flex;align-items:center;gap:16px;flex:1;min-width:280px}
+.share-bar-icon-wrap{width:44px;height:44px;border-radius:12px;background:rgba(245,164,0,.15);border:1px solid rgba(245,164,0,.35);color:var(--yellow);display:grid;place-items:center;flex-shrink:0}
+.share-bar-text h4{margin:0 0 4px;font-size:15.5px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.share-bar-text p{margin:0;font-size:12px;color:#a0a7af;line-height:1.45}
+
+.share-actions-group{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.social-share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;font-family:inherit;font-size:12.5px;font-weight:700;text-decoration:none;cursor:pointer;transition:all .2s cubic-bezier(0.16,1,0.3,1);box-sizing:border-box;border:1px solid transparent}
+.social-share-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+
+/* Facebook */
+.btn-share-facebook{background:#1877f2;color:#fff}
+.btn-share-facebook:hover{background:#166fe5;color:#fff}
+
+/* LinkedIn */
+.btn-share-linkedin{background:#0a66c2;color:#fff}
+.btn-share-linkedin:hover{background:#095196;color:#fff}
+
+/* WhatsApp */
+.btn-share-whatsapp{background:#25d366;color:#111;font-weight:800}
+.btn-share-whatsapp:hover{background:#20ba59;color:#111}
+
+/* Copy Link */
+.btn-share-copy{background:rgba(255,255,255,.08);color:#e2e5e8;border:1px solid rgba(255,255,255,.18)}
+.btn-share-copy:hover{background:rgba(245,164,0,.18);border-color:var(--yellow);color:var(--yellow)}
+.btn-share-copy.is-copied{background:rgba(16,185,129,.2);border-color:#10b981;color:#34d399}
+
 /* FAQ Section Styles */
 .faq-section{background:#f8f9fa;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .faq-heading{margin-bottom:45px}
@@ -324,6 +362,9 @@ footer{background:#0a0c0d;color:#fff}.footer-main{display:grid;grid-template-col
 .estimator-result-card{position:static}
 .estimator-form-card{padding:26px 24px}
 .recent-estimates-card{padding:24px 20px;margin-top:24px}
+.testimonials-share-bar{flex-direction:column;align-items:stretch;gap:18px;padding:22px 20px}
+.share-actions-group{width:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.social-share-btn{justify-content:center}
 }
 @media(max-width:560px){.container{width:min(100% - 28px,1160px)}.nav{height:72px}.brand-logo-img{width:38px;height:38px;border-radius:9px}.brand strong{font-size:16px}.brand small{font-size:7.5px}.hero{min-height:720px}.hero-content{padding-top:118px}.hero p{font-size:14px}.hero-meta{gap:0}.hero-meta div{padding-right:12px;margin-right:12px}.hero-meta b{font-size:11px}.hero-meta span{font-size:8px}.service-grid{grid-template-columns:1fr}.section,.contact-section{padding:75px 0}.advantage-image{min-height:340px}.cta-inner{display:block}.cta-inner h2{font-size:31px;margin:8px 0 20px}.contact-card{padding:32px 25px}.footer-main{padding:32px 0}
 .news-ticker-bar{height:35px}
@@ -351,4 +392,9 @@ footer{background:#0a0c0d;color:#fff}.footer-main{display:grid;grid-template-col
 .recent-estimates-list{grid-template-columns:1fr}
 .recent-estimates-header{flex-direction:column;align-items:flex-start;gap:12px}
 .btn-clear-recent{width:100%;text-align:center}
+.testimonials-share-bar{padding:18px 16px}
+.share-bar-content{min-width:auto}
+.share-actions-group{grid-template-columns:1fr;gap:8px}
+.testimonial-card-share{flex-direction:column;align-items:flex-start;gap:6px}
+.card-share-btns{width:100%;justify-content:space-between}
 }

@@ -241,7 +241,15 @@ const translations = {
       stat2Strong: "Rating 4.9 / 5.0",
       stat2Span: "Dari kepuasan klien borongan & harian",
       stat3Strong: "100% Siap Kerja",
-      stat3Span: "Unit terawat & operator berpengalaman"
+      stat3Span: "Unit terawat & operator berpengalaman",
+      shareTitle: "Puas Bekerjasama dengan Husni Rental?",
+      shareDesc: "Bagikan pengalaman positif dan rekomendasikan layanan rental alat berat kami kepada rekan bisnis & jejaring profesional Anda.",
+      shareFacebook: "Facebook",
+      shareLinkedin: "LinkedIn",
+      shareWhatsapp: "WhatsApp",
+      shareCopy: "Salin Tautan",
+      shareCopied: "✓ Tautan Disalin!",
+      shareCardLabel: "Bagikan ulasan:"
     },
     area: {
       kicker: "WILAYAH OPERASIONAL",
@@ -510,7 +518,15 @@ const translations = {
       stat2Strong: "4.9 / 5.0 Rating",
       stat2Span: "From daily and contract client reviews",
       stat3Strong: "100% Operational Readiness",
-      stat3Span: "Certified operators & maintained machines"
+      stat3Span: "Certified operators & maintained machines",
+      shareTitle: "Satisfied with Husni Rental's Services?",
+      shareDesc: "Share your positive experience and recommend our heavy equipment rental to fellow contractors & business networks.",
+      shareFacebook: "Facebook",
+      shareLinkedin: "LinkedIn",
+      shareWhatsapp: "WhatsApp",
+      shareCopy: "Copy Link",
+      shareCopied: "✓ Link Copied!",
+      shareCardLabel: "Share review:"
     },
     area: {
       kicker: "OPERATIONAL COVERAGE",

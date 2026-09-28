@@ -218,6 +218,132 @@ if (yearEl) {
   startAutoplay();
 })();
 
+// Testimonials Social Media Sharing (Facebook, LinkedIn, WhatsApp & Copy Link)
+(function initTestimonialsSharing() {
+  const shareFb = document.getElementById("shareFacebookBtn");
+  const shareLi = document.getElementById("shareLinkedinBtn");
+  const shareWa = document.getElementById("shareWhatsappBtn");
+  const shareCopy = document.getElementById("shareCopyBtn");
+  const shareCopyText = document.getElementById("shareCopyText");
+  let copyTimer = null;
+
+  function getShareDetails() {
+    const isEn = (localStorage.getItem("husni_lang") || "id") === "en";
+    const shareUrl = window.location.origin + window.location.pathname + "#testimoni";
+    
+    const defaultText = isEn
+      ? "Highly recommended heavy equipment & excavator rental service in Balangan and Tabalong (South Kalimantan) — proven field results and reliable operators."
+      : "Rekomendasi rental excavator terpercaya di Balangan & Tabalong, Kalimantan Selatan. Unit prima, operator handal, siap kerja untuk borongan, harian, dan bulanan.";
+
+    return { isEn, shareUrl, defaultText };
+  }
+
+  function updateMainShareLinks() {
+    const { isEn, shareUrl, defaultText } = getShareDetails();
+
+    if (shareFb) {
+      const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(defaultText)}`;
+      shareFb.href = fbUrl;
+    }
+
+    if (shareLi) {
+      const liUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+      shareLi.href = liUrl;
+    }
+
+    if (shareWa) {
+      const waText = encodeURIComponent(`${defaultText}\n\nInfo selengkapnya: ${shareUrl}`);
+      shareWa.href = `https://api.whatsapp.com/send?text=${waText}`;
+    }
+  }
+
+  // Copy link handler
+  if (shareCopy) {
+    shareCopy.addEventListener("click", () => {
+      const { isEn, shareUrl } = getShareDetails();
+      const currentLang = isEn ? "en" : "id";
+      const t = typeof translations !== "undefined" && translations[currentLang] ? translations[currentLang].testimoni : null;
+      const copiedText = t && t.shareCopied ? t.shareCopied : (isEn ? "✓ Link Copied!" : "✓ Tautan Disalin!");
+      const defaultBtnText = t && t.shareCopy ? t.shareCopy : (isEn ? "Copy Link" : "Salin Tautan");
+
+      const doCopySuccess = () => {
+        shareCopy.classList.add("is-copied");
+        if (shareCopyText) shareCopyText.textContent = copiedText;
+        if (copyTimer) clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => {
+          shareCopy.classList.remove("is-copied");
+          if (shareCopyText) shareCopyText.textContent = defaultBtnText;
+        }, 2200);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(doCopySuccess).catch(() => {
+          fallbackCopy(shareUrl, doCopySuccess);
+        });
+      } else {
+        fallbackCopy(shareUrl, doCopySuccess);
+      }
+    });
+  }
+
+  function fallbackCopy(text, callback) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand("copy");
+      if (typeof callback === "function") callback();
+    } catch (e) {
+      console.warn("Copy to clipboard fallback failed:", e);
+    }
+    document.body.removeChild(textarea);
+  }
+
+  // Card-level share buttons
+  document.querySelectorAll(".btn-card-share").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const platform = btn.getAttribute("data-platform");
+      const card = btn.closest(".testimonial-card");
+      if (!card) return;
+
+      const bodyEl = card.querySelector(".testimonial-body");
+      const authorEl = card.querySelector(".author-info strong");
+      const roleEl = card.querySelector(".author-info span");
+      const quoteText = bodyEl ? bodyEl.textContent.trim().replace(/^["']|["']$/g, "") : "";
+      const author = authorEl ? authorEl.textContent.trim() : "";
+      const role = roleEl ? roleEl.textContent.trim() : "";
+
+      const shareUrl = window.location.origin + window.location.pathname + "#testimoni";
+      const customShareText = `"${quoteText}" — ${author} (${role}) | HUSNI RENTAL EXCAVATOR Balangan`;
+
+      let targetUrl = "";
+      if (platform === "facebook") {
+        targetUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(customShareText)}`;
+      } else if (platform === "linkedin") {
+        targetUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+      } else if (platform === "whatsapp") {
+        targetUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(customShareText + "\n\n" + shareUrl)}`;
+      }
+
+      if (targetUrl) {
+        window.open(targetUrl, "_blank", "noopener,noreferrer,width=620,height=580");
+      }
+    });
+  });
+
+  // Expose link updater for language changes
+  window.updateTestimonialsShareLinks = updateMainShareLinks;
+
+  // Initialize links
+  updateMainShareLinks();
+})();
+
 // FAQ Accordion Interaction
 (function initFaqAccordion() {
   const faqItems = document.querySelectorAll(".faq-item");
@@ -430,6 +556,9 @@ if (yearEl) {
     }
     if (typeof window.renderRecentEstimates === "function") {
       window.renderRecentEstimates();
+    }
+    if (typeof window.updateTestimonialsShareLinks === "function") {
+      window.updateTestimonialsShareLinks();
     }
   }
 
