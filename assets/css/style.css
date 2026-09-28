@@ -45,13 +45,58 @@ footer{background:#0a0c0d;color:#fff}.footer-main{display:grid;grid-template-col
 .trust-stat span{font-size:11px;color:var(--muted);display:block;margin-top:2px}
 .trust-stat-sep{color:#d8dcde;font-weight:300;font-size:18px}
 
+/* FAQ Section Styles */
+.faq-section{background:#f8f9fa;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.faq-heading{margin-bottom:45px}
+.faq-layout{display:grid;grid-template-columns:340px 1fr;gap:36px;align-items:start}
+.faq-sidebar{position:sticky;top:100px}
+.faq-card-support{background:var(--dark);color:#fff;border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
+.support-icon-badge{width:44px;height:44px;border-radius:12px;background:rgba(245,164,0,.15);border:1px solid rgba(245,164,0,.4);display:grid;place-items:center;font-size:22px;margin-bottom:18px}
+.faq-card-support h3{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px;line-height:1.2}
+.faq-card-support p{color:#a2a8ae;font-size:13px;line-height:1.6;margin:0 0 22px}
+.support-checkpoints{display:grid;gap:14px;margin-bottom:26px;border-top:1px solid rgba(255,255,255,.1);padding-top:20px}
+.support-check-item{display:flex;gap:12px;align-items:flex-start}
+.support-check-icon{width:20px;height:20px;border-radius:50%;background:var(--yellow);color:#111;display:grid;place-items:center;font-size:11px;font-weight:900;flex-shrink:0;margin-top:2px}
+.support-check-item strong{display:block;font-size:12.5px;color:#fff}
+.support-check-item small{display:block;font-size:10.5px;color:#858d94;margin-top:2px}
+.btn-support{width:100%;text-align:center;box-sizing:border-box}
+
+.faq-list{display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:all .25s ease;box-shadow:0 3px 12px rgba(0,0,0,.02)}
+.faq-item:hover{border-color:rgba(245,164,0,.5);box-shadow:0 6px 20px rgba(0,0,0,.04)}
+.faq-item[open]{border-color:var(--yellow);box-shadow:0 8px 24px rgba(245,164,0,.12)}
+
+.faq-question{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;user-select:none;list-style:none;font-weight:700;font-size:15px;color:var(--dark);transition:color .2s ease}
+.faq-question::-webkit-details-marker,
+.faq-question::marker{display:none}
+.faq-item[open] .faq-question{color:#111;border-bottom:1px solid rgba(0,0,0,.06)}
+.faq-q-text{flex-grow:1;line-height:1.4}
+
+.faq-icon{width:30px;height:30px;border-radius:8px;background:var(--light);color:var(--dark);display:grid;place-items:center;flex-shrink:0;position:relative;transition:all .25s ease}
+.faq-icon::before,
+.faq-icon::after{content:'';position:absolute;background:currentColor;border-radius:2px;transition:transform .25s ease}
+.faq-icon::before{width:12px;height:2px}
+.faq-icon::after{width:2px;height:12px}
+.faq-item[open] .faq-icon{background:var(--yellow);color:#111;transform:rotate(45deg)}
+
+.faq-answer{padding:20px 24px 24px;color:var(--text);font-size:13.5px;line-height:1.7}
+.faq-answer p{margin:0 0 14px;color:#353a3e}
+.faq-answer ul{margin:0;padding-left:18px;display:grid;gap:10px}
+.faq-answer li{color:#4a5056}
+.faq-answer strong{color:var(--dark)}
+
 @media(max-width:850px){.menu-btn{display:block}nav{display:none;position:absolute;top:81px;left:0;right:0;background:#111;padding:20px;flex-direction:column;align-items:stretch;gap:8px}nav.open{display:flex}nav a{padding:10px}.trust-grid{grid-template-columns:repeat(2,1fr);gap:20px}.trust-grid>div{border:0;padding:0}.section-heading,.area-grid,.advantage-wrap{grid-template-columns:1fr;gap:35px}.section-heading p{margin:0}.service-grid{grid-template-columns:repeat(2,1fr)}.advantage-image{min-height:420px}.contact-card{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr}.footer-links{justify-content:flex-start}
 .testimonial-card{flex:0 0 calc((100% - 20px) / 2)}
 .testimonials-trust-row{gap:16px;padding:18px 20px}
+.faq-layout{grid-template-columns:1fr;gap:30px}
+.faq-sidebar{position:static}
 }
 @media(max-width:560px){.container{width:min(100% - 28px,1160px)}.nav{height:72px}.brand-logo-img{width:38px;height:38px;border-radius:9px}.brand strong{font-size:16px}.brand small{font-size:7.5px}.hero{min-height:720px}.hero-content{padding-top:70px}.hero p{font-size:14px}.hero-meta{gap:0}.hero-meta div{padding-right:12px;margin-right:12px}.hero-meta b{font-size:11px}.hero-meta span{font-size:8px}.service-grid{grid-template-columns:1fr}.section,.contact-section{padding:75px 0}.advantage-image{min-height:340px}.cta-inner{display:block}.cta-inner h2{font-size:31px;margin:8px 0 20px}.contact-card{padding:32px 25px}.footer-main{padding:32px 0}
 .testimonials-header{flex-direction:column;align-items:flex-start}
 .testimonial-card{flex:0 0 100%;min-height:auto;padding:24px}
 .testimonials-trust-row{flex-direction:column;gap:14px}
 .trust-stat-sep{display:none}
+.faq-question{padding:16px 18px;font-size:14px}
+.faq-answer{padding:16px 18px 20px;font-size:13px}
+.faq-card-support{padding:24px 20px}
 }

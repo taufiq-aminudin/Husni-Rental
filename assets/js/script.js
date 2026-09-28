@@ -217,3 +217,29 @@ if (yearEl) {
   updateSliderPosition();
   startAutoplay();
 })();
+
+// FAQ Accordion Interaction
+(function initFaqAccordion() {
+  const faqItems = document.querySelectorAll(".faq-item");
+  if (!faqItems.length) return;
+
+  faqItems.forEach((item) => {
+    const summary = item.querySelector(".faq-question");
+    if (!summary) return;
+
+    summary.addEventListener("click", () => {
+      // Optional smooth auto-scroll into view if opening near viewport bottom
+      setTimeout(() => {
+        if (item.open) {
+          const rect = item.getBoundingClientRect();
+          if (rect.bottom > window.innerHeight) {
+            window.scrollBy({
+              top: rect.bottom - window.innerHeight + 30,
+              behavior: "smooth"
+            });
+          }
+        }
+      }, 50);
+    });
+  });
+})();
