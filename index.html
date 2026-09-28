@@ -24,17 +24,28 @@
       <img src="/assets/images/husni-logo.jpg" alt="Logo Husni Rental Excavator" class="brand-logo-img" width="46" height="46" referrerpolicy="no-referrer">
       <span class="brand-text"><strong>HUSNI</strong><small>RENTAL EXCAVATOR</small></span>
     </a>
-    <button class="menu-btn" aria-label="Buka menu" aria-expanded="false">☰</button>
-    <nav id="mainNav">
-      <a href="#layanan">Layanan</a>
-      <a href="#faq">FAQ</a>
-      <a href="#keunggulan">Keunggulan</a>
-      <a href="#galeri">Galeri</a>
-      <a href="#testimoni">Testimoni</a>
-      <a href="#area">Area</a>
-      <a href="#kontak">Kontak</a>
-      <a class="nav-wa" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menanyakan%20rental%20excavator." target="_blank" rel="noopener">WhatsApp</a>
-    </nav>
+    <div class="header-nav-group">
+      <nav id="mainNav">
+        <a href="#layanan" data-i18n="nav.layanan">Layanan</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#keunggulan" data-i18n="nav.keunggulan">Keunggulan</a>
+        <a href="#galeri" data-i18n="nav.galeri">Galeri</a>
+        <a href="#testimoni" data-i18n="nav.testimoni">Testimoni</a>
+        <a href="#area" data-i18n="nav.area">Area</a>
+        <a href="#kontak" data-i18n="nav.kontak">Kontak</a>
+        <a class="nav-wa" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menanyakan%20rental%20excavator." target="_blank" rel="noopener" data-i18n="nav.whatsapp">WhatsApp</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Pilih Bahasa / Language Selector">
+        <button type="button" class="lang-btn active" data-lang="id" aria-pressed="true" title="Bahasa Indonesia">
+          <span class="flag-icon">🇮🇩</span> ID
+        </button>
+        <span class="lang-divider">|</span>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" title="English">
+          <span class="flag-icon">🇬🇧</span> EN
+        </button>
+      </div>
+      <button class="menu-btn" aria-label="Buka menu" aria-expanded="false">☰</button>
+    </div>
   </div>
 </header>
 
@@ -43,45 +54,45 @@
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <div class="hero-copy">
-      <div class="eyebrow"><span></span> SIAP UNTUK KEBUTUHAN PROYEK ANDA</div>
-      <h1>Rental Excavator<br><em>Profesional & Siap Kerja.</em></h1>
-      <p>Melayani kebutuhan alat berat untuk proyek kolam, land clearing, kebun sawit, dan berbagai pekerjaan lainnya di Paringin, Tanjung, Balangan dan sekitarnya.</p>
+      <div class="eyebrow"><span></span> <span data-i18n="hero.eyebrow">SIAP UNTUK KEBUTUHAN PROYEK ANDA</span></div>
+      <h1 data-i18n="hero.title" data-i18n-html="true">Rental Excavator<br><em>Profesional &amp; Siap Kerja.</em></h1>
+      <p data-i18n="hero.desc">Melayani kebutuhan alat berat untuk proyek kolam, land clearing, kebun sawit, dan berbagai pekerjaan lainnya di Paringin, Tanjung, Balangan dan sekitarnya.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20booking%20atau%20konsultasi%20rental%20excavator." target="_blank" rel="noopener">💬 Hubungi via WhatsApp</a>
-        <a class="btn btn-ghost" href="#layanan">Lihat Layanan ↓</a>
+        <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20booking%20atau%20konsultasi%20rental%20excavator." target="_blank" rel="noopener" data-i18n="hero.ctaWa">💬 Hubungi via WhatsApp</a>
+        <a class="btn btn-ghost" href="#layanan" data-i18n="hero.ctaServices">Lihat Layanan ↓</a>
       </div>
       <div class="hero-meta">
-        <div><b>Harian</b><span>Fleksibel</span></div>
-        <div><b>Borongan</b><span>Sesuai proyek</span></div>
-        <div><b>Bulanan</b><span>Untuk pekerjaan panjang</span></div>
+        <div><b data-i18n="hero.metaHarian">Harian</b><span data-i18n="hero.metaHarianSub">Fleksibel</span></div>
+        <div><b data-i18n="hero.metaBorongan">Borongan</b><span data-i18n="hero.metaBoronganSub">Sesuai proyek</span></div>
+        <div><b data-i18n="hero.metaBulanan">Bulanan</b><span data-i18n="hero.metaBulananSub">Untuk pekerjaan panjang</span></div>
       </div>
     </div>
   </div>
-  <div class="scroll-cue">SCROLL <span>↓</span></div>
+  <div class="scroll-cue"><span data-i18n="hero.scroll">SCROLL</span> <span>↓</span></div>
 </section>
 
 <section class="trust-strip">
   <div class="container trust-grid">
-    <div><span class="trust-icon">01</span><strong>Rental Fleksibel</strong><small>Harian, borongan & bulanan</small></div>
-    <div><span class="trust-icon">02</span><strong>Siap untuk Proyek</strong><small>Beragam kebutuhan pekerjaan</small></div>
-    <div><span class="trust-icon">03</span><strong>Area Balangan</strong><small>Paringin, Tanjung & sekitarnya</small></div>
-    <div><span class="trust-icon">04</span><strong>Konsultasi Mudah</strong><small>Hubungi langsung via WhatsApp</small></div>
+    <div><span class="trust-icon">01</span><strong data-i18n="trust.t1Title">Unit Terawat</strong><small data-i18n="trust.t1Sub">Siap kerja tanpa kendala</small></div>
+    <div><span class="trust-icon">02</span><strong data-i18n="trust.t2Title">Operator Handal</strong><small data-i18n="trust.t2Sub">Berpengalaman &amp; terampil</small></div>
+    <div><span class="trust-icon">03</span><strong data-i18n="trust.t3Title">Area Balangan</strong><small data-i18n="trust.t3Sub">Paringin, Tanjung &amp; sekitarnya</small></div>
+    <div><span class="trust-icon">04</span><strong data-i18n="trust.t4Title">Konsultasi Mudah</strong><small data-i18n="trust.t4Sub">Hubungi langsung via WhatsApp</small></div>
   </div>
 </section>
 
 <section id="layanan" class="section">
   <div class="container">
     <div class="section-heading">
-      <div><span class="kicker">LAYANAN KAMI</span><h2>Satu Excavator,<br><span>Banyak Kebutuhan.</span></h2></div>
-      <p>Kami melayani berbagai pekerjaan alat berat dengan sistem rental yang dapat disesuaikan dengan kebutuhan proyek Anda.</p>
+      <div><span class="kicker" data-i18n="layanan.kicker">LAYANAN KAMI</span><h2 data-i18n="layanan.title" data-i18n-html="true">Satu Excavator,<br><span>Banyak Kebutuhan.</span></h2></div>
+      <p data-i18n="layanan.desc">Kami melayani berbagai pekerjaan alat berat dengan sistem rental yang dapat disesuaikan dengan kebutuhan proyek Anda.</p>
     </div>
     <div class="service-grid">
-      <article class="service-card featured"><div class="number">01</div><div class="service-icon">🚜</div><h3>Rental Harian</h3><p>Cocok untuk pekerjaan singkat, perbaikan lahan, penggalian dan kebutuhan operasional lainnya.</p><a href="#kontak">Tanya harga →</a></article>
-      <article class="service-card"><div class="number">02</div><div class="service-icon">📋</div><h3>Rental Borongan</h3><p>Sistem borongan untuk pekerjaan proyek dengan ruang lingkup dan target yang jelas.</p><a href="#kontak">Konsultasikan →</a></article>
-      <article class="service-card"><div class="number">03</div><div class="service-icon">📅</div><h3>Rental Bulanan</h3><p>Solusi untuk pekerjaan jangka panjang dengan kebutuhan alat berat secara berkelanjutan.</p><a href="#kontak">Konsultasikan →</a></article>
-      <article class="service-card"><div class="number">04</div><div class="service-icon">💧</div><h3>Proyek Kolam</h3><p>Penggalian dan pekerjaan tanah untuk kolam, embung, drainase dan kebutuhan sejenis.</p><a href="#kontak">Tanya layanan →</a></article>
-      <article class="service-card"><div class="number">05</div><div class="service-icon">🌳</div><h3>Land Clearing</h3><p>Pembukaan dan pembersihan lahan untuk persiapan pembangunan maupun perkebunan.</p><a href="#kontak">Tanya layanan →</a></article>
-      <article class="service-card"><div class="number">06</div><div class="service-icon">🌴</div><h3>Kebun Sawit</h3><p>Mendukung pekerjaan pembukaan, penataan dan persiapan area kebun sawit.</p><a href="#kontak">Tanya layanan →</a></article>
+      <article class="service-card featured"><div class="number">01</div><div class="service-icon">🚜</div><h3 data-i18n="layanan.c1Title">Rental Harian</h3><p data-i18n="layanan.c1Desc">Cocok untuk pekerjaan singkat, perbaikan lahan, penggalian dan kebutuhan operasional lainnya.</p><a href="#kontak" data-i18n="layanan.c1Action">Tanya harga →</a></article>
+      <article class="service-card"><div class="number">02</div><div class="service-icon">📋</div><h3 data-i18n="layanan.c2Title">Rental Borongan</h3><p data-i18n="layanan.c2Desc">Sistem borongan untuk pekerjaan proyek dengan ruang lingkup dan target yang jelas.</p><a href="#kontak" data-i18n="layanan.c2Action">Konsultasikan →</a></article>
+      <article class="service-card"><div class="number">03</div><div class="service-icon">📅</div><h3 data-i18n="layanan.c3Title">Rental Bulanan</h3><p data-i18n="layanan.c3Desc">Solusi untuk pekerjaan jangka panjang dengan kebutuhan alat berat secara berkelanjutan.</p><a href="#kontak" data-i18n="layanan.c3Action">Konsultasikan →</a></article>
+      <article class="service-card"><div class="number">04</div><div class="service-icon">💧</div><h3 data-i18n="layanan.c4Title">Proyek Kolam</h3><p data-i18n="layanan.c4Desc">Penggalian dan pekerjaan tanah untuk kolam, embung, drainase dan kebutuhan sejenis.</p><a href="#kontak" data-i18n="layanan.c4Action">Tanya layanan →</a></article>
+      <article class="service-card"><div class="number">05</div><div class="service-icon">🌳</div><h3 data-i18n="layanan.c5Title">Land Clearing</h3><p data-i18n="layanan.c5Desc">Pembukaan dan pembersihan lahan untuk persiapan pembangunan maupun perkebunan.</p><a href="#kontak" data-i18n="layanan.c5Action">Tanya layanan →</a></article>
+      <article class="service-card"><div class="number">06</div><div class="service-icon">🌴</div><h3 data-i18n="layanan.c6Title">Kebun Sawit</h3><p data-i18n="layanan.c6Desc">Mendukung pekerjaan pembukaan, penataan dan persiapan area kebun sawit.</p><a href="#kontak" data-i18n="layanan.c6Action">Tanya layanan →</a></article>
     </div>
   </div>
 </section>
@@ -90,10 +101,10 @@
   <div class="container">
     <div class="section-heading faq-heading">
       <div>
-        <span class="kicker">FAQ &amp; INFORMASI SEWA</span>
-        <h2>Pertanyaan Sering<br><span>Diajukan Klien.</span></h2>
+        <span class="kicker" data-i18n="faq.kicker">FAQ &amp; INFORMASI SEWA</span>
+        <h2 data-i18n="faq.title" data-i18n-html="true">Pertanyaan Sering<br><span>Diajukan Klien.</span></h2>
       </div>
-      <p>Jawaban lengkap seputar ketentuan rental, operator, mobilisasi alat, dan metode pembayaran untuk kemudahan persiapan proyek Anda di Balangan dan sekitarnya.</p>
+      <p data-i18n="faq.desc">Jawaban lengkap seputar ketentuan rental, operator, mobilisasi alat, dan metode pembayaran untuk kemudahan persiapan proyek Anda di Balangan dan sekitarnya.</p>
     </div>
 
     <div class="faq-layout">
@@ -101,34 +112,34 @@
       <aside class="faq-sidebar">
         <div class="faq-card-support">
           <div class="support-icon-badge">💬</div>
-          <h3>Punya Kebutuhan Spesifik?</h3>
-          <p>Jika proyek Anda memiliki spesifikasi teknis khusus atau ingin menanyakan jadwal ketersediaan unit excavator hari ini, hubungi kami langsung.</p>
+          <h3 data-i18n="faq.sidebarTitle">Punya Kebutuhan Spesifik?</h3>
+          <p data-i18n="faq.sidebarDesc">Jika proyek Anda memiliki spesifikasi teknis khusus atau ingin menanyakan jadwal ketersediaan unit excavator hari ini, hubungi kami langsung.</p>
           
           <div class="support-checkpoints">
             <div class="support-check-item">
               <span class="support-check-icon">✓</span>
               <div>
-                <strong>Konsultasi Cepat via WA</strong>
-                <small>Respon ramah &amp; tanpa ribet</small>
+                <strong data-i18n="faq.sidebarCheck1Title">Konsultasi Cepat via WA</strong>
+                <small data-i18n="faq.sidebarCheck1Sub">Respon ramah &amp; tanpa ribet</small>
               </div>
             </div>
             <div class="support-check-item">
               <span class="support-check-icon">✓</span>
               <div>
-                <strong>Survei Lapangan Gratis</strong>
-                <small>Area Paringin, Tanjung &amp; sekitarnya</small>
+                <strong data-i18n="faq.sidebarCheck2Title">Survei Lapangan Gratis</strong>
+                <small data-i18n="faq.sidebarCheck2Sub">Area Paringin, Tanjung &amp; sekitarnya</small>
               </div>
             </div>
             <div class="support-check-item">
               <span class="support-check-icon">✓</span>
               <div>
-                <strong>Estimasi Transparan</strong>
-                <small>Perhitungan waktu &amp; biaya realistis</small>
+                <strong data-i18n="faq.sidebarCheck3Title">Estimasi Transparan</strong>
+                <small data-i18n="faq.sidebarCheck3Sub">Perhitungan waktu &amp; biaya realistis</small>
               </div>
             </div>
           </div>
 
-          <a class="btn btn-primary btn-support" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20tanya%20detail%20seputar%20sewa%20alat." target="_blank" rel="noopener">
+          <a class="btn btn-primary btn-support" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20tanya%20detail%20seputar%20sewa%20alat." target="_blank" rel="noopener" data-i18n="faq.sidebarBtn">
             💬 Tanya Langsung via WA
           </a>
         </div>
@@ -139,10 +150,10 @@
         <!-- Q1: Ketentuan Rental & Minimal Durasi -->
         <details class="faq-item" open>
           <summary class="faq-question">
-            <span class="faq-q-text">Apa saja sistem dan minimal durasi sewa excavator yang tersedia?</span>
+            <span class="faq-q-text" data-i18n="faq.q1">Apa saja sistem dan minimal durasi sewa excavator yang tersedia?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq.a1" data-i18n-html="true">
             <p>Kami menyediakan tiga opsi sistem rental fleksibel yang dapat disesuaikan dengan volume proyek Anda:</p>
             <ul>
               <li><strong>Rental Harian (Shift):</strong> Cocok untuk pekerjaan durasi singkat seperti galian pondasi bangunan, saluran air, atau perbaikan tanggul. Minimal sewa standar adalah 1 shift (8 jam operasional kerja).</li>
@@ -155,10 +166,10 @@
         <!-- Q2: Operator Handal & BBM Solar -->
         <details class="faq-item" open>
           <summary class="faq-question">
-            <span class="faq-q-text">Apakah tarif sewa sudah termasuk operator handal dan bahan bakar (BBM)?</span>
+            <span class="faq-q-text" data-i18n="faq.q2">Apakah tarif sewa sudah termasuk operator handal dan bahan bakar (BBM)?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq.a2" data-i18n-html="true">
             <p>Kami memberikan dua skema sewa yang transparan sesuai preferensi Anda:</p>
             <ul>
               <li><strong>Paket All-In (Praktis &amp; Bebas Repot):</strong> Tarif sudah mencakup unit excavator prima, operator berpengalaman, dan bahan bakar solar. Anda cukup mengarahkan pekerjaan di lapangan tanpa perlu memikirkan logistik BBM.</li>
@@ -170,10 +181,10 @@
         <!-- Q3: Metode & Skema Pembayaran -->
         <details class="faq-item">
           <summary class="faq-question">
-            <span class="faq-q-text">Bagaimana metode dan tahapan pembayaran sewa alat berat?</span>
+            <span class="faq-q-text" data-i18n="faq.q3">Bagaimana metode dan tahapan pembayaran sewa alat berat?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq.a3" data-i18n-html="true">
             <p>Sistem pembayaran kami sangat transparan, aman, dan fleksibel. Kami menerima <strong>Transfer Bank Resmi</strong> (BCA, Mandiri, BRI) serta <strong>Pembayaran Tunai (Cash)</strong>:</p>
             <ul>
               <li><strong>Sewa Harian &amp; Borongan:</strong> Pembayaran diawali dengan uang muka (DP) saat konfirmasi jadwal dan mobilisasi unit. Pelunasan diselesaikan bertahap sesuai progres kesepakatan atau saat serah terima pekerjaan selesai.</li>
@@ -185,10 +196,10 @@
         <!-- Q4: Mobilisasi Alat & Cakupan Wilayah -->
         <details class="faq-item">
           <summary class="faq-question">
-            <span class="faq-q-text">Bagaimana teknis mobilisasi (pengiriman) excavator ke lokasi proyek?</span>
+            <span class="faq-q-text" data-i18n="faq.q4">Bagaimana teknis mobilisasi (pengiriman) excavator ke lokasi proyek?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq.a4" data-i18n-html="true">
             <p>Unit excavator diantar langsung ke lokasi kerja Anda menggunakan truk angkut khusus (<em>self-loader / tronton</em>). Kami melayani pengiriman ke Paringin, Tanjung, Batumandi, Lampihong, Halong, Awayan, Juai, serta seluruh area Balangan, Tabalong, dan wilayah Kalimantan Selatan lainnya. Biaya mobilisasi dan demobilisasi (mob-demob) dihitung wajar berdasarkan jarak tempuh dan aksesibilitas jalan.</p>
           </div>
         </details>
@@ -196,10 +207,10 @@
         <!-- Q5: Survei Lapangan & Estimasi Biaya -->
         <details class="faq-item">
           <summary class="faq-question">
-            <span class="faq-q-text">Apakah bisa dilakukan survei lapangan terlebih dahulu sebelum mulai pekerjaan?</span>
+            <span class="faq-q-text" data-i18n="faq.q5">Apakah bisa dilakukan survei lapangan terlebih dahulu sebelum mulai pekerjaan?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq.a5" data-i18n-html="true">
             <p>Tentu saja! Untuk pekerjaan skala borongan, pembukaan lahan perkebunan, maupun pembuatan kolam/embung, kami dapat melakukan peninjauan lokasi terlebih dahulu. Survei ini bertujuan untuk melihat kontur tanah, jalur masuk unit, dan memperkirakan volume pekerjaan sehingga estimasi biaya dan durasi yang kami berikan akurat dan hemat bagi Anda.</p>
           </div>
         </details>
@@ -207,10 +218,10 @@
         <!-- Q6: Penanganan Kendala Teknis / Breakdown -->
         <details class="faq-item">
           <summary class="faq-question">
-            <span class="faq-q-text">Bagaimana jika terjadi kendala teknis atau kerusakan unit saat bekerja?</span>
+            <span class="faq-q-text" data-i18n="faq.q6">Bagaimana jika terjadi kendala teknis atau kerusakan unit saat bekerja?</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
-          <div class="faq-answer">
+          <div class="faq-answer" data-i18n="faq.a6" data-i18n-html="true">
             <p>Unit kami dirawat secara berkala untuk menjamin performa maksimal. Namun jika terjadi kendala teknis tak terduga, tim mekanik kami segera diterjunkan ke lokasi untuk perbaikan cepat. Waktu terhenti operasional (<em>breakdown time</em>) <strong>tidak dihitung</strong> ke dalam jam sewa Anda, sehingga hak kerja Anda terjamin aman 100%.</p>
           </div>
         </details>
@@ -222,18 +233,18 @@
 <section id="keunggulan" class="dark-section">
   <div class="container advantage-wrap">
     <div class="advantage-image" style="background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%), url('/assets/images/husni-logo.jpg') center/cover;">
-      <div class="image-label"><b>HUSNI RENTAL EXCAVATOR</b><span>UNIT SIAP KERJA · PARINGIN - BALANGAN</span></div>
+      <div class="image-label"><b data-i18n="keunggulan.imgLabelTitle">HUSNI RENTAL EXCAVATOR</b><span data-i18n="keunggulan.imgLabelSub">UNIT SIAP KERJA · PARINGIN - BALANGAN</span></div>
     </div>
     <div class="advantage-copy">
-      <span class="kicker">KENAPA HUSNI RENTAL?</span>
-      <h2>Fokus pada pekerjaan.<br><span>Alat siap membantu.</span></h2>
-      <p>Jelaskan kebutuhan proyek Anda. Kami siap membantu menentukan sistem rental yang sesuai dengan jenis dan durasi pekerjaan.</p>
+      <span class="kicker" data-i18n="keunggulan.kicker">KENAPA HUSNI RENTAL?</span>
+      <h2 data-i18n="keunggulan.title" data-i18n-html="true">Fokus pada pekerjaan.<br><span>Alat siap membantu.</span></h2>
+      <p data-i18n="keunggulan.desc">Jelaskan kebutuhan proyek Anda. Kami siap membantu menentukan sistem rental yang sesuai dengan jenis dan durasi pekerjaan.</p>
       <div class="check-list">
-        <div><b>✓</b><span><strong>Sistem rental fleksibel</strong><small>Harian, borongan maupun bulanan.</small></span></div>
-        <div><b>✓</b><span><strong>Berbagai jenis pekerjaan</strong><small>Kolam, land clearing, sawit dan pekerjaan lainnya.</small></span></div>
-        <div><b>✓</b><span><strong>Konsultasi langsung</strong><small>Komunikasikan lokasi dan kebutuhan proyek Anda.</small></span></div>
+        <div><b>✓</b><span><strong data-i18n="keunggulan.l1Title">Sistem rental fleksibel</strong><small data-i18n="keunggulan.l1Sub">Harian, borongan maupun bulanan.</small></span></div>
+        <div><b>✓</b><span><strong data-i18n="keunggulan.l2Title">Berbagai jenis pekerjaan</strong><small data-i18n="keunggulan.l2Sub">Kolam, land clearing, sawit dan pekerjaan lainnya.</small></span></div>
+        <div><b>✓</b><span><strong data-i18n="keunggulan.l3Title">Konsultasi langsung</strong><small data-i18n="keunggulan.l3Sub">Komunikasikan lokasi dan kebutuhan proyek Anda.</small></span></div>
       </div>
-      <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20konsultasi%20kebutuhan%20proyek." target="_blank" rel="noopener">Konsultasi Sekarang ↗</a>
+      <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20konsultasi%20kebutuhan%20proyek." target="_blank" rel="noopener" data-i18n="keunggulan.cta">Konsultasi Sekarang ↗</a>
     </div>
   </div>
 </section>
@@ -242,19 +253,19 @@
   <div class="container">
     <div class="section-heading gallery-heading">
       <div>
-        <span class="kicker">DOKUMENTASI PEKERJAAN</span>
-        <h2>Galeri Alat &amp;<br><span>Proyek di Lapangan.</span></h2>
+        <span class="kicker" data-i18n="galeri.kicker">DOKUMENTASI LAPANGAN</span>
+        <h2 data-i18n="galeri.title" data-i18n-html="true">Galeri Alat &amp;<br><span>Pekerjaan Proyek.</span></h2>
       </div>
-      <p>Dokumentasi excavator kami saat beroperasi di berbagai medan proyek di Balangan, Tabalong, dan sekitarnya. Bukti nyata kesiapan unit dan keahlian operator kami.</p>
+      <p data-i18n="galeri.desc">Dokumentasi visual nyata excavator kami di berbagai medan proyek — mulai dari pembukaan lahan, galian kolam, hingga perataan tanah di Balangan dan sekitarnya.</p>
     </div>
 
     <!-- Filter Buttons -->
     <div class="gallery-filter-bar" role="tablist" aria-label="Filter Kategori Galeri Proyek">
-      <button class="gallery-filter-btn active" data-filter="all" role="tab" aria-selected="true">Semua Proyek</button>
-      <button class="gallery-filter-btn" data-filter="land-clearing" role="tab" aria-selected="false">Land Clearing</button>
-      <button class="gallery-filter-btn" data-filter="kolam" role="tab" aria-selected="false">Galian Kolam</button>
-      <button class="gallery-filter-btn" data-filter="konstruksi" role="tab" aria-selected="false">Konstruksi</button>
-      <button class="gallery-filter-btn" data-filter="drainase" role="tab" aria-selected="false">Drainase &amp; Parit</button>
+      <button class="gallery-filter-btn active" data-filter="all" role="tab" aria-selected="true" data-i18n="galeri.fAll">Semua Proyek</button>
+      <button class="gallery-filter-btn" data-filter="land-clearing" role="tab" aria-selected="false" data-i18n="galeri.fClearing">Land Clearing</button>
+      <button class="gallery-filter-btn" data-filter="kolam" role="tab" aria-selected="false" data-i18n="galeri.fPond">Galian Kolam</button>
+      <button class="gallery-filter-btn" data-filter="konstruksi" role="tab" aria-selected="false" data-i18n="galeri.fConstruction">Konstruksi</button>
+      <button class="gallery-filter-btn" data-filter="drainase" role="tab" aria-selected="false" data-i18n="galeri.fDrainage">Normalisasi Drainase</button>
     </div>
 
     <!-- Gallery Grid -->
@@ -263,18 +274,18 @@
       <article class="gallery-card" data-category="land-clearing">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-land-clearing.jpg" data-caption="Pembersihan semak belukar, penumbangan pohon, dan perataan lahan di Juai, Balangan.">
           <img src="/assets/images/gallery-land-clearing.jpg" alt="Pekerjaan Land Clearing Excavator di Juai Balangan" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
-          <div class="gallery-badge">Land Clearing</div>
+          <div class="gallery-badge" data-i18n="galeri.c1Badge">Land Clearing</div>
           <button class="gallery-zoom-btn" aria-label="Perbesar foto land clearing" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
         </div>
         <div class="gallery-info">
           <div class="gallery-meta">
-            <span class="gallery-loc">📍 Area Juai, Balangan</span>
-            <span class="gallery-durasi">Sewa Borongan</span>
+            <span class="gallery-loc" data-i18n="galeri.c1Tag1">📍 Area Juai, Balangan</span>
+            <span class="gallery-durasi" data-i18n="galeri.c1Tag2">Sewa Borongan</span>
           </div>
-          <h3>Pembersihan &amp; Pembukaan Lahan</h3>
-          <p>Pembersihan semak, penumbangan tunggul kayu, serta perataan kontur tanah siap tanam untuk perkebunan sawit dan lahan kavling.</p>
+          <h3 data-i18n="galeri.c1Title">Pembukaan Lahan Sawit &amp; Perkebunan</h3>
+          <p data-i18n="galeri.c1Desc">Penumbangan semak belukar, pembersihan tunggul kayu, dan perataan jalur tanam di area perkebunan sawit seluas 5 hektar.</p>
         </div>
       </article>
 
@@ -282,18 +293,18 @@
       <article class="gallery-card" data-category="kolam">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-pond-digging.jpg" data-caption="Penggalian kolam penampungan air dan embung pertanian di Paringin Kota.">
           <img src="/assets/images/gallery-pond-digging.jpg" alt="Penggalian Kolam dan Embung Penampungan Air di Paringin" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
-          <div class="gallery-badge">Galian Kolam</div>
+          <div class="gallery-badge" data-i18n="galeri.c2Badge">Galian Kolam</div>
           <button class="gallery-zoom-btn" aria-label="Perbesar foto galian kolam" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
         </div>
         <div class="gallery-info">
           <div class="gallery-meta">
-            <span class="gallery-loc">📍 Paringin Kota</span>
-            <span class="gallery-durasi">Sewa Harian</span>
+            <span class="gallery-loc" data-i18n="galeri.c2Tag1">📍 Paringin Kota</span>
+            <span class="gallery-durasi" data-i18n="galeri.c2Tag2">Sewa Harian</span>
           </div>
-          <h3>Penggalian Kolam &amp; Embung Air</h3>
-          <p>Pengerukan tanah dengan kedalaman dan kemiringan tanggul presisi untuk kolam budidaya ikan air tawar dan tampungan air perkebunan.</p>
+          <h3 data-i18n="galeri.c2Title">Pembuatan Kolam Ikan &amp; Embung Air</h3>
+          <p data-i18n="galeri.c2Desc">Pengerukan kolam penampungan air dan budidaya ikan dengan profil dinding terasering presisi dan tanggul tanah kokoh.</p>
         </div>
       </article>
 
@@ -301,18 +312,18 @@
       <article class="gallery-card" data-category="konstruksi">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-construction-site.jpg" data-caption="Pekerjaan cut and fill pematangan tanah fondasi bangunan di Batumandi - Tanjung.">
           <img src="/assets/images/gallery-construction-site.jpg" alt="Proyek Cut and Fill Pematangan Lahan Bangunan Batumandi Tanjung" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
-          <div class="gallery-badge">Konstruksi</div>
+          <div class="gallery-badge" data-i18n="galeri.c3Badge">Konstruksi &amp; Cut-Fill</div>
           <button class="gallery-zoom-btn" aria-label="Perbesar foto proyek konstruksi" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
         </div>
         <div class="gallery-info">
           <div class="gallery-meta">
-            <span class="gallery-loc">📍 Batumandi - Tanjung</span>
-            <span class="gallery-durasi">Sewa Bulanan</span>
+            <span class="gallery-loc" data-i18n="galeri.c3Tag1">📍 Batumandi - Tanjung</span>
+            <span class="gallery-durasi" data-i18n="galeri.c3Tag2">Sewa Bulanan</span>
           </div>
-          <h3>Pematangan Lahan &amp; Cut and Fill</h3>
-          <p>Pengupasan lapisan tanah lunak, perataan kontur perbukitan, serta pemadatan tanah dasar untuk persiapan konstruksi sipil dan perumahan.</p>
+          <h3 data-i18n="galeri.c3Title">Pematangan Lahan &amp; Fondasi Bangunan</h3>
+          <p data-i18n="galeri.c3Desc">Pekerjaan cut and fill perbukitan, pemadatan tanah, dan penataan elevasi lahan untuk fondasi gudang logistik.</p>
         </div>
       </article>
 
@@ -320,18 +331,18 @@
       <article class="gallery-card" data-category="drainase">
         <div class="gallery-img-wrap" data-src="/assets/images/gallery-drainage-trench.jpg" data-caption="Normalisasi saluran drainase dan galian parit jalan di Lampihong, Balangan.">
           <img src="/assets/images/gallery-drainage-trench.jpg" alt="Penggalian Parit dan Normalisasi Saluran Air Lampihong" class="gallery-img" loading="lazy" referrerpolicy="no-referrer">
-          <div class="gallery-badge">Drainase &amp; Parit</div>
+          <div class="gallery-badge" data-i18n="galeri.c4Badge">Drainase &amp; Parit</div>
           <button class="gallery-zoom-btn" aria-label="Perbesar foto galian saluran air" title="Perbesar Foto">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
           </button>
         </div>
         <div class="gallery-info">
           <div class="gallery-meta">
-            <span class="gallery-loc">📍 Lampihong, Balangan</span>
-            <span class="gallery-durasi">Sewa Harian / Borongan</span>
+            <span class="gallery-loc" data-i18n="galeri.c4Tag1">📍 Lampihong</span>
+            <span class="gallery-durasi" data-i18n="galeri.c4Tag2">Sewa Borongan</span>
           </div>
-          <h3>Normalisasi Saluran &amp; Parit Jalan</h3>
-          <p>Pembuatan saluran drainase baru di pinggir akses jalan dan pengerukan sedimentasi lumpur agar aliran air lancar bebas banjir.</p>
+          <h3 data-i18n="galeri.c4Title">Normalisasi Saluran &amp; Parit Drainase</h3>
+          <p data-i18n="galeri.c4Desc">Penggalian saluran primer dan pembersihan sedimentasi parit jalan perkebunan untuk kelancaran aliran air saat musim hujan.</p>
         </div>
       </article>
     </div>
@@ -339,11 +350,11 @@
     <!-- Gallery Callout -->
     <div class="gallery-callout">
       <div class="gallery-callout-text">
-        <strong>Punya Kebutuhan Pekerjaan Serupa di Lahan Anda?</strong>
-        <span>Kami siap memberikan rekomendasi teknis dan perkiraan durasi kerja yang paling efisien.</span>
+        <strong data-i18n="galeri.bannerTitle">Punya Kebutuhan Proyek Serupa?</strong>
+        <span data-i18n="galeri.bannerDesc">Diskusikan rencana galian, pembukaan lahan, atau perataan tanah Anda dengan tim kami untuk mendapatkan rekomendasi dan estimasi biaya terbaik.</span>
       </div>
-      <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20melihat%20galeri%20proyek%20dan%20ingin%20konsultasi%20pekerjaan%20lahan." target="_blank" rel="noopener">
-        Konsultasikan Proyek Anda ↗
+      <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20melihat%20galeri%20proyek%20dan%20ingin%20konsultasi%20pekerjaan%20lahan." target="_blank" rel="noopener" data-i18n="galeri.bannerBtn">
+        💬 Hubungi Kami untuk Estimasi Proyek ↗
       </a>
     </div>
   </div>
@@ -363,8 +374,8 @@
   <div class="container">
     <div class="testimonials-header">
       <div class="testimonials-title-group">
-        <span class="kicker">TESTIMONI KLIEN</span>
-        <h2>Kepercayaan Proyek,<br><span>Hasil yang Terbukti.</span></h2>
+        <span class="kicker" data-i18n="testimoni.kicker">TESTIMONI KLIEN</span>
+        <h2 data-i18n="testimoni.title" data-i18n-html="true">Kepercayaan Proyek,<br><span>Hasil yang Terbukti.</span></h2>
       </div>
       <div class="slider-controls" aria-label="Kontrol slider testimoni">
         <button class="slider-arrow prev-btn" id="prevTestimonial" aria-label="Testimoni sebelumnya" title="Sebelumnya">
@@ -382,16 +393,16 @@
         <article class="testimonial-card" role="group" aria-roledescription="slide" aria-label="1 dari 5">
           <div class="testimonial-top">
             <div class="stars" aria-label="Rating 5 dari 5 bintang">★★★★★</div>
-            <span class="testimonial-tag">Sewa Borongan · Lahan Sawit</span>
+            <span class="testimonial-tag" data-i18n="testimoni.t1Tag">Sewa Borongan · Lahan Sawit</span>
           </div>
-          <blockquote class="testimonial-body">
+          <blockquote class="testimonial-body" data-i18n="testimoni.t1Body">
             "Sewa borongan untuk buka lahan sawit di Juai sangat memuaskan. Unit excavator dalam kondisi prima tanpa kendala rewel, operator gesit dan sangat paham kontur tanah gambut maupun perbukitan. Pekerjaan selesai 2 hari lebih cepat dari estimasi."
           </blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">HS</div>
             <div class="author-info">
               <strong>H. Syarkawi</strong>
-              <span>Pemilik Kebun Sawit · Juai, Balangan</span>
+              <span data-i18n="testimoni.t1Role">Pemilik Kebun Sawit · Juai, Balangan</span>
             </div>
           </div>
         </article>
@@ -400,16 +411,16 @@
         <article class="testimonial-card" role="group" aria-roledescription="slide" aria-label="2 dari 5">
           <div class="testimonial-top">
             <div class="stars" aria-label="Rating 5 dari 5 bintang">★★★★★</div>
-            <span class="testimonial-tag">Sewa Harian · Proyek Embung</span>
+            <span class="testimonial-tag" data-i18n="testimoni.t2Tag">Sewa Harian · Proyek Embung</span>
           </div>
-          <blockquote class="testimonial-body">
+          <blockquote class="testimonial-body" data-i18n="testimoni.t2Body">
             "Excavator dari Pak Husni sangat bertenaga. Respon cepat saat kami butuh tambahan alat untuk galian embung penampungan air desa. Konsumsi solar efisien, sistem hydraulic responsif, dan tarif sewanya sangat transparan dan bersahabat."
           </blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">PG</div>
             <div class="author-info">
               <strong>Pak Gunawan</strong>
-              <span>Mandor Proyek Irigasi · Paringin Kota</span>
+              <span data-i18n="testimoni.t2Role">Mandor Proyek Irigasi · Paringin Kota</span>
             </div>
           </div>
         </article>
@@ -418,16 +429,16 @@
         <article class="testimonial-card" role="group" aria-roledescription="slide" aria-label="3 dari 5">
           <div class="testimonial-top">
             <div class="stars" aria-label="Rating 5 dari 5 bintang">★★★★★</div>
-            <span class="testimonial-tag">Sewa Bulanan · Cut &amp; Fill</span>
+            <span class="testimonial-tag" data-i18n="testimoni.t3Tag">Sewa Bulanan · Cut &amp; Fill</span>
           </div>
-          <blockquote class="testimonial-body">
+          <blockquote class="testimonial-body" data-i18n="testimoni.t3Body">
             "Sudah 2 kali kontrak bulanan dengan Husni Rental untuk pematangan lahan perumahan dan jalan akses di Tabalong. Operator disiplin masuk pagi dan taat SOP K3. Maintenance rutin dilakukan sehingga waktu henti alat nyaris nol."
           </blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">BU</div>
             <div class="author-info">
               <strong>Bambang Utomo</strong>
-              <span>Kontraktor Sipil · Tanjung, Tabalong</span>
+              <span data-i18n="testimoni.t3Role">Kontraktor Sipil · Tanjung, Tabalong</span>
             </div>
           </div>
         </article>
@@ -436,16 +447,16 @@
         <article class="testimonial-card" role="group" aria-roledescription="slide" aria-label="4 dari 5">
           <div class="testimonial-top">
             <div class="stars" aria-label="Rating 5 dari 5 bintang">★★★★★</div>
-            <span class="testimonial-tag">Sewa Borongan · Kolam Ikan</span>
+            <span class="testimonial-tag" data-i18n="testimoni.t4Tag">Sewa Borongan · Kolam Ikan</span>
           </div>
-          <blockquote class="testimonial-body">
+          <blockquote class="testimonial-body" data-i18n="testimoni.t4Body">
             "Pekerjaan pembuatan 4 kolam pembesaran ikan patin rapi sekali. Dinding tanggul dipadatkan dengan rapi sehingga tidak mudah longsor saat musim hujan. Pelayanan ramah dan terbuka diajak konsultasi teknis tanah."
           </blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">HR</div>
             <div class="author-info">
               <strong>Hj. Rusminah</strong>
-              <span>Pengusaha Tambak Air Tawar · Lampihong</span>
+              <span data-i18n="testimoni.t4Role">Pengusaha Tambak Air Tawar · Lampihong</span>
             </div>
           </div>
         </article>
@@ -454,16 +465,16 @@
         <article class="testimonial-card" role="group" aria-roledescription="slide" aria-label="5 dari 5">
           <div class="testimonial-top">
             <div class="stars" aria-label="Rating 5 dari 5 bintang">★★★★★</div>
-            <span class="testimonial-tag">Sewa Harian · Land Clearing</span>
+            <span class="testimonial-tag" data-i18n="testimoni.t5Tag">Sewa Harian · Land Clearing</span>
           </div>
-          <blockquote class="testimonial-body">
+          <blockquote class="testimonial-body" data-i18n="testimoni.t5Body">
             "Pembersihan tunggul pohon keras dan perataan tanah pekarangan untuk workshop selesai tanpa hambatan. Unit diantar tronton tepat waktu sampai ke Halong. Komunikasi via WhatsApp sangat praktis dan cepat tanggap."
           </blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">AF</div>
             <div class="author-info">
               <strong>Ahmad Fauzan</strong>
-              <span>Pengembang Usaha Lokal · Halong, Balangan</span>
+              <span data-i18n="testimoni.t5Role">Pengembang Usaha Lokal · Halong, Balangan</span>
             </div>
           </div>
         </article>
@@ -479,18 +490,18 @@
     <!-- Social Proof Trust Stats -->
     <div class="testimonials-trust-row">
       <div class="trust-stat">
-        <strong>100%</strong>
-        <span>Kesiapan Alat &amp; Operator</span>
+        <strong data-i18n="testimoni.stat3Strong">100%</strong>
+        <span data-i18n="testimoni.stat3Span">Kesiapan Alat &amp; Operator</span>
       </div>
       <div class="trust-stat-sep" aria-hidden="true">/</div>
       <div class="trust-stat">
-        <strong>50+</strong>
-        <span>Proyek Tanah &amp; Lahan Selesai</span>
+        <strong data-i18n="testimoni.stat1Strong">50+</strong>
+        <span data-i18n="testimoni.stat1Span">Proyek Tanah &amp; Lahan Selesai</span>
       </div>
       <div class="trust-stat-sep" aria-hidden="true">/</div>
       <div class="trust-stat">
-        <strong>Balangan &amp; Tanjung</strong>
-        <span>Mobilisasi Cepat Tepat Waktu</span>
+        <strong data-i18n="testimoni.stat2Strong">Rating 4.9 / 5.0</strong>
+        <span data-i18n="testimoni.stat2Span">Dari kepuasan klien borongan &amp; harian</span>
       </div>
     </div>
   </div>
@@ -499,9 +510,9 @@
 <section id="area" class="section area-section">
   <div class="container area-grid">
     <div>
-      <span class="kicker">AREA PELAYANAN</span>
-      <h2>Berbasis di<br><span>Balangan, Kalsel.</span></h2>
-      <p>Melayani kebutuhan rental excavator di kawasan Paringin, Tanjung, Balangan, Kalimantan Selatan dan area sekitar sesuai kesepakatan proyek.</p>
+      <span class="kicker" data-i18n="area.kicker">AREA PELAYANAN</span>
+      <h2 data-i18n="area.title" data-i18n-html="true">Berbasis di<br><span>Balangan, Kalsel.</span></h2>
+      <p data-i18n="area.desc">Melayani kebutuhan rental excavator di kawasan Paringin, Tanjung, Balangan, Kalimantan Selatan dan area sekitar sesuai kesepakatan proyek.</p>
       <div class="location-list">
         <span>📍 Paringin</span><span>📍 Tanjung</span><span>📍 Balangan</span><span>📍 Kalimantan Selatan</span>
       </div>
@@ -509,27 +520,27 @@
     <div class="map-card">
       <div class="map-grid"></div>
       <div class="map-pin">📍</div>
-      <div class="map-caption"><strong>HUSNI RENTAL EXCAVATOR</strong><span>Paringin • Balangan • Kalimantan Selatan</span></div>
+      <div class="map-caption"><strong data-i18n="area.mapCapStrong">HUSNI RENTAL EXCAVATOR</strong><span data-i18n="area.mapCapSpan">Paringin • Balangan • Kalimantan Selatan</span></div>
     </div>
   </div>
 </section>
 
 <section class="cta-section">
   <div class="container cta-inner">
-    <div><span class="kicker">BUTUH EXCAVATOR?</span><h2>Ceritakan kebutuhan proyek Anda.</h2><p>Hubungi kami untuk informasi rental dan konsultasi pekerjaan.</p></div>
-    <a class="btn btn-primary btn-large" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menanyakan%20rental%20excavator.%20Lokasi%20proyek:%20%0AJenis%20pekerjaan:%20%0ADurasi:%20" target="_blank" rel="noopener">💬 0812-5043-4900</a>
+    <div><span class="kicker">BUTUH EXCAVATOR?</span><h2 data-i18n="cta.title">Siap Memulai Pekerjaan Anda Hari Ini?</h2><p data-i18n="cta.desc">Diskusikan rencana dan kebutuhan rental excavator Anda sekarang juga. Kami siap memberikan penawaran terbaik.</p></div>
+    <a class="btn btn-primary btn-large" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator,%20saya%20ingin%20menanyakan%20rental%20excavator." target="_blank" rel="noopener" data-i18n="cta.btn">💬 0812-5043-4900</a>
   </div>
 </section>
 
 <section id="kontak" class="contact-section">
   <div class="container">
     <div class="contact-card">
-      <div><span class="kicker">HUBUNGI KAMI</span><h2>HUSNI RENTAL<br><span>EXCAVATOR</span></h2><p>Siap membantu kebutuhan alat berat untuk proyek Anda.</p></div>
+      <div><span class="kicker" data-i18n="kontak.kicker">HUBUNGI KAMI</span><h2 data-i18n="kontak.title" data-i18n-html="true">HUSNI RENTAL<br><span>EXCAVATOR</span></h2><p data-i18n="kontak.desc">Siap membantu kebutuhan alat berat untuk proyek Anda.</p></div>
       <div class="contact-details">
-        <a href="tel:+6281250434900"><small>TELEPON / WHATSAPP</small><strong>0812-5043-4900</strong></a>
-        <div><small>LOKASI</small><strong>Paringin – Tanjung, Balangan<br>Kalimantan Selatan</strong></div>
+        <a href="tel:+6281250434900"><small data-i18n="kontak.labelPhone">TELEPON / WHATSAPP</small><strong>0812-5043-4900</strong></a>
+        <div><small data-i18n="kontak.labelLoc">LOKASI</small><strong data-i18n="kontak.locVal" data-i18n-html="true">Paringin – Tanjung, Balangan<br>Kalimantan Selatan</strong></div>
       </div>
-      <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator." target="_blank" rel="noopener">Chat WhatsApp ↗</a>
+      <a class="btn btn-primary" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator." target="_blank" rel="noopener" data-i18n="kontak.btnWa">Chat WhatsApp ↗</a>
     </div>
   </div>
 </section>
@@ -537,16 +548,39 @@
 
 <footer>
   <div class="container footer-main">
-    <a class="brand" href="#home" aria-label="Husni Rental Excavator">
-      <img src="/assets/images/husni-logo.jpg" alt="Logo Husni Rental Excavator" class="brand-logo-img" width="46" height="46" referrerpolicy="no-referrer">
-      <span class="brand-text"><strong>HUSNI</strong><small>RENTAL EXCAVATOR</small></span>
-    </a>
-    <p>Rental excavator untuk kebutuhan proyek di Paringin, Tanjung, Balangan, Kalimantan Selatan.</p>
-    <div class="footer-links"><a href="#layanan">Layanan</a><a href="#faq">FAQ</a><a href="#keunggulan">Keunggulan</a><a href="#galeri">Galeri</a><a href="#testimoni">Testimoni</a><a href="#area">Area</a><a href="#kontak">Kontak</a></div>
+    <div>
+      <a class="brand" href="#home" aria-label="Husni Rental Excavator">
+        <img src="/assets/images/husni-logo.jpg" alt="Logo Husni Rental Excavator" class="brand-logo-img" width="46" height="46" referrerpolicy="no-referrer">
+        <span class="brand-text"><strong>HUSNI</strong><small>RENTAL EXCAVATOR</small></span>
+      </a>
+      <div class="footer-lang-wrap">
+        <span class="footer-lang-label" data-i18n="footer.langLabel">Pilih Bahasa:</span>
+        <div class="lang-switch footer-lang-switch" role="group" aria-label="Pilih Bahasa / Language Selector">
+          <button type="button" class="lang-btn active" data-lang="id" aria-pressed="true" title="Bahasa Indonesia">
+            <span class="flag-icon">🇮🇩</span> Indonesia
+          </button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" title="English">
+            <span class="flag-icon">🇬🇧</span> English
+          </button>
+        </div>
+      </div>
+    </div>
+    <p data-i18n="footer.desc">Rental excavator untuk kebutuhan proyek di Paringin, Tanjung, Balangan, Kalimantan Selatan.</p>
+    <div class="footer-links">
+      <a href="#layanan" data-i18n="nav.layanan">Layanan</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#keunggulan" data-i18n="nav.keunggulan">Keunggulan</a>
+      <a href="#galeri" data-i18n="nav.galeri">Galeri</a>
+      <a href="#testimoni" data-i18n="nav.testimoni">Testimoni</a>
+      <a href="#area" data-i18n="nav.area">Area</a>
+      <a href="#kontak" data-i18n="nav.kontak">Kontak</a>
+    </div>
   </div>
-  <div class="container copyright">© <span id="year"></span> HUSNI RENTAL EXCAVATOR. All rights reserved.</div>
+  <div class="container copyright">© <span id="year"></span> HUSNI RENTAL EXCAVATOR. <span data-i18n="footer.rights">All rights reserved.</span></div>
 </footer>
 <a class="floating-wa" href="https://wa.me/6281250434900?text=Halo%20Husni%20Rental%20Excavator." target="_blank" rel="noopener" aria-label="WhatsApp">☏</a>
+<script src="assets/js/translations.js"></script>
 <script src="assets/js/script.js"></script>
 </body>
 </html>

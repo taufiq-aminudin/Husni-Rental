@@ -318,3 +318,91 @@ if (yearEl) {
     });
   }
 })();
+
+// Internationalization (i18n) Engine
+(function initI18n() {
+  const langButtons = document.querySelectorAll(".lang-btn");
+  if (!langButtons.length || typeof translations === "undefined") return;
+
+  let currentLang = localStorage.getItem("husni_lang") || "id";
+  if (!translations[currentLang]) currentLang = "id";
+
+  function getNested(obj, path) {
+    return path.split(".").reduce((prev, curr) => (prev ? prev[curr] : undefined), obj);
+  }
+
+  function setLanguage(lang) {
+    if (!translations[lang]) return;
+    currentLang = lang;
+    localStorage.setItem("husni_lang", lang);
+    document.documentElement.lang = lang;
+
+    const t = translations[lang];
+
+    // Update document title and meta descriptions
+    if (t.site) {
+      document.title = t.site.title;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute("content", t.site.desc);
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute("content", t.site.title);
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute("content", t.site.desc);
+    }
+
+    // Update text elements with data-i18n
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      const val = getNested(t, key);
+      if (val !== undefined) {
+        if (el.getAttribute("data-i18n-html") === "true") {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+    });
+
+    // Update attribute translations
+    document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
+      const mappings = el.getAttribute("data-i18n-attr").split(";");
+      mappings.forEach((mapping) => {
+        const [attr, key] = mapping.split(":").map((s) => s.trim());
+        if (attr && key) {
+          const val = getNested(t, key);
+          if (val !== undefined) {
+            el.setAttribute(attr, val);
+          }
+        }
+      });
+    });
+
+    // Update WhatsApp links
+    if (t.waPreset) {
+      const encodedMsg = encodeURIComponent(t.waPreset);
+      document.querySelectorAll('a[href*="wa.me/6281250434900"]').forEach((a) => {
+        a.setAttribute("href", `https://wa.me/6281250434900?text=${encodedMsg}`);
+      });
+    }
+
+    // Update language buttons active state
+    langButtons.forEach((btn) => {
+      const btnLang = btn.getAttribute("data-lang");
+      const isActive = btnLang === lang;
+      btn.classList.toggle("active", isActive);
+      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+  }
+
+  langButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const chosenLang = btn.getAttribute("data-lang");
+      if (chosenLang && chosenLang !== currentLang) {
+        setLanguage(chosenLang);
+      }
+    });
+  });
+
+  // Apply on initial load
+  setLanguage(currentLang);
+})();
