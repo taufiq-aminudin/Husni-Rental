@@ -27,6 +27,7 @@
     <div class="header-nav-group">
       <nav id="mainNav">
         <a href="#layanan" data-i18n="nav.layanan">Layanan</a>
+        <a href="#estimator" data-i18n="nav.estimator">Estimator</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
         <a href="#keunggulan" data-i18n="nav.keunggulan">Keunggulan</a>
         <a href="#galeri" data-i18n="nav.galeri">Galeri</a>
@@ -93,6 +94,200 @@
       <article class="service-card"><div class="number">04</div><div class="service-icon">💧</div><h3 data-i18n="layanan.c4Title">Proyek Kolam</h3><p data-i18n="layanan.c4Desc">Penggalian dan pekerjaan tanah untuk kolam, embung, drainase dan kebutuhan sejenis.</p><a href="#kontak" data-i18n="layanan.c4Action">Tanya layanan →</a></article>
       <article class="service-card"><div class="number">05</div><div class="service-icon">🌳</div><h3 data-i18n="layanan.c5Title">Land Clearing</h3><p data-i18n="layanan.c5Desc">Pembukaan dan pembersihan lahan untuk persiapan pembangunan maupun perkebunan.</p><a href="#kontak" data-i18n="layanan.c5Action">Tanya layanan →</a></article>
       <article class="service-card"><div class="number">06</div><div class="service-icon">🌴</div><h3 data-i18n="layanan.c6Title">Kebun Sawit</h3><p data-i18n="layanan.c6Desc">Mendukung pekerjaan pembukaan, penataan dan persiapan area kebun sawit.</p><a href="#kontak" data-i18n="layanan.c6Action">Tanya layanan →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="estimator" class="section estimator-section">
+  <div class="container">
+    <div class="section-heading estimator-heading">
+      <div>
+        <span class="kicker" data-i18n="estimator.kicker">SIMULATOR &amp; ESTIMASI SEWA</span>
+        <h2 data-i18n="estimator.title" data-i18n-html="true">Kalkulator Estimasi<br><span>Durasi Hari Sewa.</span></h2>
+      </div>
+      <p data-i18n="estimator.desc">Simulasikan jenis proyek dan perkiraan skala pekerjaan Anda untuk memperoleh estimasi durasi hari kerja, rekomendasi sistem rental, serta panduan pengajuan penawaran resmi.</p>
+    </div>
+
+    <div class="estimator-grid">
+      <!-- Left: Interactive Configuration Form -->
+      <div class="estimator-card estimator-form-card">
+        <div class="estimator-card-header">
+          <div class="step-badge">1</div>
+          <div>
+            <h3 data-i18n="estimator.step1Title">Parameter Pekerjaan</h3>
+            <p data-i18n="estimator.step1Desc">Pilih jenis proyek dan tentukan skala atau durasi target pekerjaan Anda.</p>
+          </div>
+        </div>
+
+        <form id="estimatorForm" class="estimator-form" onsubmit="return false;">
+          <!-- 1. Jenis Pekerjaan -->
+          <div class="form-group">
+            <label class="form-label" for="estProjectType" data-i18n="estimator.labelProjectType">Jenis Pekerjaan Proyek</label>
+            <div class="select-wrapper">
+              <select id="estProjectType" class="form-select">
+                <option value="clearing" data-i18n="estimator.optClearing">Land Clearing / Pembersihan Lahan</option>
+                <option value="pond" data-i18n="estimator.optPond">Penggalian Kolam / Embung Air</option>
+                <option value="earthwork" data-i18n="estimator.optEarthwork">Pematangan Lahan / Cut &amp; Fill</option>
+                <option value="drainage" data-i18n="estimator.optDrainage">Saluran Parit &amp; Normalisasi Drainase</option>
+                <option value="oilpalm" data-i18n="estimator.optOilPalm">Perkebunan Sawit (Penataan Lahan &amp; Parit)</option>
+                <option value="general" data-i18n="estimator.optGeneral">Pekerjaan Sipil / Galian Fondasi Umum</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 2. Skala / Target Volume Dinamis -->
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" id="estScopeLabel" for="estScopeRange" data-i18n="estimator.labelScope">Perkiraan Luas / Skala Pekerjaan</label>
+              <span id="estScopeValueBadge" class="value-badge">2.0 Hektar</span>
+            </div>
+            <div class="range-slider-wrap">
+              <input type="range" id="estScopeRange" class="form-range" min="0.5" max="10" step="0.5" value="2.0">
+            </div>
+            <div class="range-hints">
+              <span id="estRangeMinHint">0.5 Ha</span>
+              <span id="estRangeMidHint">5.0 Ha</span>
+              <span id="estRangeMaxHint">10.0+ Ha</span>
+            </div>
+          </div>
+
+          <!-- 3. Kondisi Medan Tanah -->
+          <div class="form-group">
+            <label class="form-label" data-i18n="estimator.labelTerrain">Tingkat Kesulitan Medan &amp; Tanah</label>
+            <div class="radio-pill-group" role="radiogroup" aria-label="Tingkat Kesulitan Medan">
+              <label class="radio-pill">
+                <input type="radio" name="estTerrain" value="light">
+                <span class="pill-content">
+                  <strong data-i18n="estimator.terrainLight">Ringan</strong>
+                  <small data-i18n="estimator.terrainLightSub">Tanah gembur / semak tipis</small>
+                </span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="estTerrain" value="medium" checked>
+                <span class="pill-content">
+                  <strong data-i18n="estimator.terrainMedium">Sedang</strong>
+                  <small data-i18n="estimator.terrainMediumSub">Akar kayu / tanah agak liat</small>
+                </span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="estTerrain" value="heavy">
+                <span class="pill-content">
+                  <strong data-i18n="estimator.terrainHeavy">Berat</strong>
+                  <small data-i18n="estimator.terrainHeavySub">Rawa / tunggul keras / curam</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4. Pilihan Paket Sewa -->
+          <div class="form-group">
+            <label class="form-label" data-i18n="estimator.labelPackage">Pilihan Paket Sewa</label>
+            <div class="radio-card-grid">
+              <label class="radio-card">
+                <input type="radio" name="estPackage" value="allin" checked>
+                <div class="radio-card-body">
+                  <div class="radio-card-head">
+                    <span class="radio-dot"></span>
+                    <strong data-i18n="estimator.pkgAllIn">Paket All-In (Praktis)</strong>
+                  </div>
+                  <p data-i18n="estimator.pkgAllInDesc">Termasuk excavator, operator profesional, &amp; BBM solar siap kerja.</p>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="estPackage" value="dry">
+                <div class="radio-card-body">
+                  <div class="radio-card-head">
+                    <span class="radio-dot"></span>
+                    <strong data-i18n="estimator.pkgDry">Paket Non-BBM</strong>
+                  </div>
+                  <p data-i18n="estimator.pkgDryDesc">Unit + operator disediakan, solar disuplai pihak penyewa di lapangan.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 5. Lokasi Proyek -->
+          <div class="form-group">
+            <label class="form-label" for="estLocation" data-i18n="estimator.labelLocation">Lokasi Titik Proyek</label>
+            <div class="select-wrapper">
+              <select id="estLocation" class="form-select">
+                <option value="Paringin (Balangan)" data-i18n="estimator.locParingin">Paringin - Kab. Balangan</option>
+                <option value="Batumandi / Lampihong" data-i18n="estimator.locBatumandi">Batumandi / Lampihong - Balangan</option>
+                <option value="Juai / Halong / Awayan" data-i18n="estimator.locJuai">Juai / Halong / Awayan - Balangan</option>
+                <option value="Tanjung (Tabalong)" data-i18n="estimator.locTanjung">Tanjung / Murung Pudak - Kab. Tabalong</option>
+                <option value="Kalimantan Selatan Lainnya" data-i18n="estimator.locOther">Wilayah Kalsel Lainnya</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right: Real-time Output & Final Quote Guide -->
+      <div class="estimator-card estimator-result-card">
+        <div class="result-header">
+          <span class="result-status-badge">
+            <span class="pulse-dot"></span>
+            <span data-i18n="estimator.resultStatus">Hasil Simulasi Real-Time</span>
+          </span>
+          <span class="result-brand-tag">HUSNI ESTIMATOR</span>
+        </div>
+
+        <!-- Main Metric Box -->
+        <div class="result-main-metric">
+          <small data-i18n="estimator.resultLabelDays">Perkiraan Durasi Sewa:</small>
+          <div class="metric-number-wrap">
+            <strong id="resDaysValue">4 - 5</strong>
+            <span class="metric-unit" data-i18n="estimator.unitDays">Hari Kerja</span>
+          </div>
+          <div class="metric-sub-detail">
+            <span id="resHoursValue">± 32 - 40 Jam Operasional</span>
+            <small data-i18n="estimator.standardShiftNote">(Standar 1 Shift = 8 Jam Kerja/Hari)</small>
+          </div>
+        </div>
+
+        <!-- Recommendations Section -->
+        <div class="result-breakdown">
+          <div class="breakdown-item">
+            <span class="breakdown-label" data-i18n="estimator.labelRecSystem">Rekomendasi Sistem:</span>
+            <span id="resSystemBadge" class="rec-badge highlight">Rental Borongan</span>
+          </div>
+          <p id="resSystemExplain" class="breakdown-explain" data-i18n="estimator.recSystemExplain">
+            Sistem borongan sangat disarankan agar total biaya pasti disepakati di muka tanpa risiko biaya jam tambahan.
+          </p>
+
+          <div class="breakdown-item">
+            <span class="breakdown-label" data-i18n="estimator.labelRecUnit">Tipe Unit Disarankan:</span>
+            <strong id="resUnitType">Excavator Standard / Long Arm</strong>
+          </div>
+
+          <div class="breakdown-item">
+            <span class="breakdown-label" data-i18n="estimator.labelMobility">Mobilisasi Unit:</span>
+            <span id="resMobilityNote" class="breakdown-value">Armada Tronton Self-Loader Langsung ke Lokasi</span>
+          </div>
+        </div>
+
+        <!-- Practical Project Tip Box -->
+        <div class="estimator-tip-box">
+          <div class="tip-icon">💡</div>
+          <div class="tip-text">
+            <strong data-i18n="estimator.tipTitle">Tips Efisiensi Anggaran:</strong>
+            <p id="resProjectTip" data-i18n="estimator.tipDesc">
+              Siapkan jalur masuk armada dan titik penampungan hasil kerukan sebelum unit tiba untuk memaksimalkan jam kerja efektif sejak hari pertama.
+            </p>
+          </div>
+        </div>
+
+        <!-- Conversion & Next Steps CTA -->
+        <div class="estimator-action-box">
+          <a id="estimatorWaBtn" class="btn btn-primary btn-block btn-quote" href="#" target="_blank" rel="noopener">
+            <span class="btn-icon">💬</span>
+            <span data-i18n="estimator.ctaFinalQuote">Minta Penawaran Harga Final via WA ↗</span>
+          </a>
+          <p class="estimator-disclaimer" data-i18n="estimator.disclaimer">
+            *Hasil estimasi merupakan perkiraan awal berbasis rata-rata jam kerja excavator standar. Biaya final disesuaikan dengan hasil survei lapangan, akses jalan, dan negosiasi durasi.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -569,6 +764,7 @@
     <p data-i18n="footer.desc">Rental excavator untuk kebutuhan proyek di Paringin, Tanjung, Balangan, Kalimantan Selatan.</p>
     <div class="footer-links">
       <a href="#layanan" data-i18n="nav.layanan">Layanan</a>
+      <a href="#estimator" data-i18n="nav.estimator">Estimator</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a href="#keunggulan" data-i18n="nav.keunggulan">Keunggulan</a>
       <a href="#galeri" data-i18n="nav.galeri">Galeri</a>

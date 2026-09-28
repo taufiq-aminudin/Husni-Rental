@@ -377,10 +377,10 @@ if (yearEl) {
       });
     });
 
-    // Update WhatsApp links
+    // Update WhatsApp links (exclude custom estimator quote button)
     if (t.waPreset) {
       const encodedMsg = encodeURIComponent(t.waPreset);
-      document.querySelectorAll('a[href*="wa.me/6281250434900"]').forEach((a) => {
+      document.querySelectorAll('a[href*="wa.me/6281250434900"]:not(#estimatorWaBtn)').forEach((a) => {
         a.setAttribute("href", `https://wa.me/6281250434900?text=${encodedMsg}`);
       });
     }
@@ -392,6 +392,11 @@ if (yearEl) {
       btn.classList.toggle("active", isActive);
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
+
+    // Refresh estimator calculations and units in chosen language
+    if (typeof window.recalculateEstimator === "function") {
+      window.recalculateEstimator();
+    }
   }
 
   langButtons.forEach((btn) => {
@@ -405,4 +410,321 @@ if (yearEl) {
 
   // Apply on initial load
   setLanguage(currentLang);
+})();
+
+// Project Estimator & Simulator Module
+(function initProjectEstimator() {
+  const form = document.getElementById("estimatorForm");
+  if (!form) return;
+
+  const projectTypeSelect = document.getElementById("estProjectType");
+  const scopeRange = document.getElementById("estScopeRange");
+  const scopeLabel = document.getElementById("estScopeLabel");
+  const scopeValueBadge = document.getElementById("estScopeValueBadge");
+  const minHint = document.getElementById("estRangeMinHint");
+  const midHint = document.getElementById("estRangeMidHint");
+  const maxHint = document.getElementById("estRangeMaxHint");
+  const locationSelect = document.getElementById("estLocation");
+
+  const resDaysValue = document.getElementById("resDaysValue");
+  const resHoursValue = document.getElementById("resHoursValue");
+  const resSystemBadge = document.getElementById("resSystemBadge");
+  const resSystemExplain = document.getElementById("resSystemExplain");
+  const resUnitType = document.getElementById("resUnitType");
+  const resMobilityNote = document.getElementById("resMobilityNote");
+  const resProjectTip = document.getElementById("resProjectTip");
+  const estimatorWaBtn = document.getElementById("estimatorWaBtn");
+
+  // Configuration metrics per project category
+  const configMap = {
+    clearing: {
+      unitId: "Hektar",
+      unitEn: "Hectares",
+      labelId: "Perkiraan Luas Lahan (Hektar)",
+      labelEn: "Estimated Land Area (Hectares)",
+      min: 0.5,
+      max: 10,
+      step: 0.5,
+      defaultVal: 2.0,
+      minHint: "0.5 Ha",
+      midHint: "5.0 Ha",
+      maxHint: "10.0+ Ha",
+      unitType: "Excavator Standard 200 (Heavy Duty Bucket)",
+      unitTypeEn: "Standard 200 Excavator (Heavy Duty Bucket)",
+      tipId: "Pastikan batas patok lahan sudah jelas dan rute armada tronton tidak terhambat jembatan kayu berbobot terbatas.",
+      tipEn: "Ensure boundary markers are established and transport access is cleared of weight-restricted bridges."
+    },
+    pond: {
+      unitId: "m³",
+      unitEn: "m³",
+      labelId: "Volume / Ukuran Kolam (m³)",
+      labelEn: "Pond Excavation Volume (m³)",
+      min: 100,
+      max: 3000,
+      step: 100,
+      defaultVal: 600,
+      minHint: "100 m³",
+      midHint: "1.500 m³",
+      maxHint: "3.000+ m³",
+      unitType: "Excavator Standard 200 / Long Arm",
+      unitTypeEn: "Standard 200 / Long Arm Excavator",
+      tipId: "Tentukan area pembuangan/tanggul tanah kerukan di sekitar bibir kolam agar tidak perlu dua kali kerja pemindahan.",
+      tipEn: "Designate soil deposit embankments around pond edges beforehand to prevent double-handling of excavated earth."
+    },
+    earthwork: {
+      unitId: "m²",
+      unitEn: "m²",
+      labelId: "Luas Area Pematangan / Leveling (m²)",
+      labelEn: "Site Leveling / Cut & Fill Area (m²)",
+      min: 200,
+      max: 5000,
+      step: 200,
+      defaultVal: 1200,
+      minHint: "200 m²",
+      midHint: "2.500 m²",
+      maxHint: "5.000+ m²",
+      unitType: "Excavator Standard 200 + Dozer Blade Track",
+      unitTypeEn: "Standard 200 Excavator with Leveling Track",
+      tipId: "Survei kontur elevasi tanah terlebih dahulu guna memperkirakan rasio timbunan vs galian agar hemat biaya dump truck.",
+      tipEn: "Survey contour elevations in advance to balance cut-and-fill ratios, minimizing external dump truck haulage."
+    },
+    drainage: {
+      unitId: "Meter",
+      unitEn: "Meters",
+      labelId: "Panjang Jalur Parit / Drainase (Meter)",
+      labelEn: "Trench / Canal Route Length (Meters)",
+      min: 50,
+      max: 2000,
+      step: 50,
+      defaultVal: 400,
+      minHint: "50 m",
+      midHint: "1.000 m",
+      maxHint: "2.000+ m",
+      unitType: "Excavator Standard / Narrow Trench Bucket",
+      unitTypeEn: "Standard Excavator / Narrow Trench Bucket",
+      tipId: "Pekerjaan parit keliling kebun lebih cepat dan rapi bila arah aliran buangan air sudah direncanakan dengan elevasi gravitasi.",
+      tipEn: "Perimeter ditching proceeds faster when downstream discharge gravity points are pre-mapped."
+    },
+    oilpalm: {
+      unitId: "Hektar",
+      unitEn: "Hectares",
+      labelId: "Luas Lahan Blok Sawit (Hektar)",
+      labelEn: "Oil Palm Block Area (Hectares)",
+      min: 1,
+      max: 25,
+      step: 1,
+      defaultVal: 3,
+      minHint: "1 Ha",
+      midHint: "12 Ha",
+      maxHint: "25+ Ha",
+      unitType: "Excavator High Ground Clearance 200",
+      unitTypeEn: "High Ground Clearance 200 Excavator",
+      tipId: "Untuk pembukaan blok perkebunan sawit, sistem borongan atau bulanan memberikan penghematan biaya operasional hingga 25%.",
+      tipEn: "For plantation block development, lump-sum or monthly contracts reduce operating costs by up to 25%."
+    },
+    general: {
+      unitId: "Jam Kerja",
+      unitEn: "Operating Hours",
+      labelId: "Estimasi Kebutuhan Jam Operasional",
+      labelEn: "Target Operating Hours Needed",
+      min: 8,
+      max: 160,
+      step: 8,
+      defaultVal: 24,
+      minHint: "8 Jam (1 Shift)",
+      midHint: "80 Jam",
+      maxHint: "160+ Jam",
+      unitType: "Excavator Serbaguna / Kelas 200",
+      unitTypeEn: "All-Purpose Class 200 Excavator",
+      tipId: "Penggunaan paket All-In membebaskan Anda dari kerumitan pengadaan BBM solar eceran dan logistik jerigen di lokasi.",
+      tipEn: "Selecting the All-In package spares you from diesel fuel procurement, jerrycan logistics, and field refueling risks."
+    }
+  };
+
+  function updateSliderConfig() {
+    const type = projectTypeSelect.value;
+    const conf = configMap[type] || configMap.clearing;
+    const isEn = (localStorage.getItem("husni_lang") || "id") === "en";
+
+    scopeRange.min = conf.min;
+    scopeRange.max = conf.max;
+    scopeRange.step = conf.step;
+
+    const currentVal = parseFloat(scopeRange.value);
+    if (isNaN(currentVal) || currentVal < conf.min || currentVal > conf.max) {
+      scopeRange.value = conf.defaultVal;
+    }
+
+    scopeLabel.textContent = isEn ? conf.labelEn : conf.labelId;
+    minHint.textContent = conf.minHint;
+    midHint.textContent = conf.midHint;
+    maxHint.textContent = conf.maxHint;
+  }
+
+  function calculate() {
+    const isEn = (localStorage.getItem("husni_lang") || "id") === "en";
+    const type = projectTypeSelect.value;
+    const conf = configMap[type] || configMap.clearing;
+    const val = parseFloat(scopeRange.value);
+
+    // Update value badge
+    const unitText = isEn ? conf.unitEn : conf.unitId;
+    scopeValueBadge.textContent = `${val} ${unitText}`;
+
+    // Terrain modifier
+    const terrainEl = document.querySelector('input[name="estTerrain"]:checked');
+    const terrain = terrainEl ? terrainEl.value : "medium";
+    let terrainMult = 1.0;
+    if (terrain === "light") terrainMult = 0.8;
+    else if (terrain === "heavy") terrainMult = 1.35;
+
+    // Package modifier
+    const pkgEl = document.querySelector('input[name="estPackage"]:checked');
+    const pkg = pkgEl ? pkgEl.value : "allin";
+
+    // Location
+    const loc = locationSelect.value;
+
+    // Calculate approximate work days
+    let baseDaysMin = 1;
+    let baseDaysMax = 1;
+
+    switch (type) {
+      case "clearing":
+        baseDaysMin = Math.max(1, Math.round(val * 1.8 * terrainMult));
+        baseDaysMax = Math.max(baseDaysMin + 1, Math.round(val * 2.5 * terrainMult));
+        break;
+      case "pond":
+        baseDaysMin = Math.max(1, Math.round((val / 300) * terrainMult));
+        baseDaysMax = Math.max(baseDaysMin + 1, Math.round((val / 200) * terrainMult));
+        break;
+      case "earthwork":
+        baseDaysMin = Math.max(1, Math.round((val / 400) * terrainMult));
+        baseDaysMax = Math.max(baseDaysMin + 1, Math.round((val / 280) * terrainMult));
+        break;
+      case "drainage":
+        baseDaysMin = Math.max(1, Math.round((val / 120) * terrainMult));
+        baseDaysMax = Math.max(baseDaysMin + 1, Math.round((val / 80) * terrainMult));
+        break;
+      case "oilpalm":
+        baseDaysMin = Math.max(1, Math.round(val * 1.4 * terrainMult));
+        baseDaysMax = Math.max(baseDaysMin + 1, Math.round(val * 2.2 * terrainMult));
+        break;
+      case "general":
+        baseDaysMin = Math.max(1, Math.floor(val / 8));
+        baseDaysMax = Math.max(baseDaysMin, Math.ceil((val * terrainMult) / 8));
+        break;
+    }
+
+    // Days display
+    if (baseDaysMin === baseDaysMax) {
+      resDaysValue.textContent = `${baseDaysMin}`;
+    } else {
+      resDaysValue.textContent = `${baseDaysMin} - ${baseDaysMax}`;
+    }
+
+    const hoursMin = baseDaysMin * 8;
+    const hoursMax = baseDaysMax * 8;
+    resHoursValue.textContent = isEn
+      ? `± ${hoursMin} - ${hoursMax} Operating Hours`
+      : `± ${hoursMin} - ${hoursMax} Jam Operasional`;
+
+    // Recommend system based on duration
+    const avgDays = (baseDaysMin + baseDaysMax) / 2;
+    let systemBadgeText = "";
+    let systemExplainText = "";
+
+    if (avgDays <= 3) {
+      systemBadgeText = isEn ? "Daily Rental (Shift)" : "Rental Harian (Shift)";
+      systemExplainText = isEn
+        ? "Daily shift rental offers optimum flexibility for quick operations with transparent per-shift accounting."
+        : "Sistem harian (shift) sangat fleksibel untuk pekerjaan cepat, dihitung transparan per 8 jam operasional.";
+    } else if (avgDays <= 20) {
+      systemBadgeText = isEn ? "Lump-Sum Contract (Recommended)" : "Rental Borongan (Rekomendasi)";
+      systemExplainText = isEn
+        ? "Lump-sum contracting is highly recommended to lock deliverables and total budget with zero overtime surprises."
+        : "Sistem borongan sangat disarankan agar total biaya pasti disepakati di muka tanpa risiko biaya jam tambahan.";
+    } else {
+      systemBadgeText = isEn ? "Monthly Rental (Max Savings)" : "Rental Bulanan (Paling Hemat)";
+      systemExplainText = isEn
+        ? "Monthly lease structure provides dedicated unit availability at the lowest daily operating cost."
+        : "Sistem sewa bulanan memberikan tarif harian paling hemat dengan unit excavator siaga penuh di lokasi Anda.";
+    }
+
+    resSystemBadge.textContent = systemBadgeText;
+    resSystemExplain.textContent = systemExplainText;
+
+    // Recommended unit and tips
+    resUnitType.textContent = isEn ? conf.unitTypeEn : conf.unitType;
+    resProjectTip.textContent = isEn ? conf.tipEn : conf.tipId;
+
+    resMobilityNote.textContent = isEn
+      ? `Dedicated Self-Loader Truck to ${loc}`
+      : `Armada Tronton Self-Loader ke ${loc}`;
+
+    // Customized WhatsApp quote inquiry URL
+    const typeLabel = projectTypeSelect.options[projectTypeSelect.selectedIndex].text;
+    const terrainLabel = isEn
+      ? (terrain === "light" ? "Light" : terrain === "heavy" ? "Heavy" : "Moderate")
+      : (terrain === "light" ? "Ringan" : terrain === "heavy" ? "Berat" : "Sedang");
+
+    const pkgLabel = pkg === "allin"
+      ? (isEn ? "All-In (Unit + Operator + Fuel)" : "All-In (Unit + Operator + Solar)")
+      : (isEn ? "Dry (Unit + Operator)" : "Non-BBM (Unit + Operator)");
+
+    let waMessage = "";
+    if (isEn) {
+      waMessage = `Hello Husni Rental Excavator, I simulated a quote for my project on your website:
+• Project: ${typeLabel}
+• Estimated Scale: ${val} ${unitText}
+• Terrain Condition: ${terrainLabel}
+• Package: ${pkgLabel}
+• Location: ${loc}
+• Estimated Duration: ${resDaysValue.textContent} Days (${hoursMin}-${hoursMax} Hours)
+• Recommended System: ${systemBadgeText}
+
+Could you provide the official final quotation and equipment availability schedule? Thank you.`;
+    } else {
+      waMessage = `Halo Husni Rental Excavator, saya telah menghitung estimasi kebutuhan proyek via website:
+• Jenis Proyek: ${typeLabel}
+• Estimasi Skala: ${val} ${unitText}
+• Kondisi Medan: ${terrainLabel}
+• Pilihan Paket: ${pkgLabel}
+• Titik Lokasi: ${loc}
+• Perkiraan Durasi: ${resDaysValue.textContent} Hari Kerja (${hoursMin}-${hoursMax} Jam)
+• Sistem Disarankan: ${systemBadgeText}
+
+Mohon informasi penawaran harga final dan jadwal unit yang tersedia. Terima kasih.`;
+    }
+
+    estimatorWaBtn.href = `https://wa.me/6281250434900?text=${encodeURIComponent(waMessage)}`;
+  }
+
+  // Event listeners
+  projectTypeSelect.addEventListener("change", () => {
+    updateSliderConfig();
+    calculate();
+  });
+
+  scopeRange.addEventListener("input", calculate);
+
+  document.querySelectorAll('input[name="estTerrain"]').forEach((r) => {
+    r.addEventListener("change", calculate);
+  });
+
+  document.querySelectorAll('input[name="estPackage"]').forEach((r) => {
+    r.addEventListener("change", calculate);
+  });
+
+  locationSelect.addEventListener("change", calculate);
+
+  // Expose recalculate function for language switcher
+  window.recalculateEstimator = function () {
+    updateSliderConfig();
+    calculate();
+  };
+
+  // Initial calculation
+  updateSliderConfig();
+  calculate();
 })();
